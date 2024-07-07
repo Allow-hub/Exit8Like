@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
 
         if (!once && isInGame)
         {
-            ChangeToMenuState();
+            ChangeToTutorialState();
             once = true;
         }
         StateHandler();
@@ -131,6 +131,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeToTitleState() => SetState(GameState.Title);
     public void ChangeToMenuState() => SetState(GameState.Menu);
     public void ChangeToTutorialState() => SetState(GameState.Tutorial);
+    public void ChangeToFindingAnomaliesState() => SetState(GameState.FindingAnomalies);
 
 
 }

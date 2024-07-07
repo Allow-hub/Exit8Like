@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
 
+    private const float magnification = 3; // ダッシュ時の速度倍率
     private Vector3 lastInput;
     private GameObject playerObj;
     Rigidbody rb;
@@ -21,16 +21,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerObj = this.gameObject.transform.GetChild(0).gameObject;
     }
+
     // Update is called once per frame
     void Update()
     {
-        Move(); 
+        Move();
     }
-    //プレイヤーの動き
+
+    // プレイヤーの動き
     private void Move()
     {
         Vector3 moveDirection = playerInput.InputVector.normalized;
-        float moveInput = playerInput.InputVector.x;
         lastInput = playerInput.InputVector.x != 0 ? playerInput.InputVector : lastInput;
 
         // 左右の向きに応じて回転角度を設定
@@ -42,8 +43,10 @@ public class PlayerController : MonoBehaviour
         // Y軸の回転だけを設定して回転
         playerObj.transform.eulerAngles = new Vector3(currentRotation.x, targetRotation, currentRotation.z);
 
-        Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
+        // ダッシュ時の速度を計算
+        float currentSpeed = playerInput.IsDash ? moveSpeed * magnification : moveSpeed;
+        // 位置を計算して移動
+        Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
     }
-
 }

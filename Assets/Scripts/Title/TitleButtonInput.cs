@@ -21,6 +21,7 @@ public class TitleButtonInput : MonoBehaviour
     public  void OnInGame()
     {
         SceneManager.LoadScene(1);
+        BGMManager.I.StopBGM();
     }
 
     public void OnOption()

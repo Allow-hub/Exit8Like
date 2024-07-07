@@ -7,9 +7,12 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private KeyCode left = KeyCode.A;
     [SerializeField] private KeyCode right = KeyCode.D;
+    [SerializeField] private KeyCode dash = KeyCode.LeftShift;
     public Vector2 InputVector => inputVector;
     private Vector2 inputVector;
 
+    public bool IsDash { get=>isDash; private set=>isDash=value; }
+    private bool isDash;
 
     private float xInput;
     private float yInput;
@@ -19,7 +22,7 @@ public class PlayerInput : MonoBehaviour
     {
         //debug—p
         if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
 
         xInput = 0;
         yInput = 0;
@@ -45,6 +48,7 @@ public class PlayerInput : MonoBehaviour
             xInput++;
         }
 
+        isDash = Input.GetKey(dash);
 
         inputVector = new Vector2(xInput, yInput);
 
