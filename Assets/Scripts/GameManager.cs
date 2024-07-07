@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
         Title,
         Menu,
         Tutorial,//インゲーム初めの異変がない状態
-        AnomalyDetermination, //異変判定、仕様書のA
+        CheckAnomalies, //異変判定、仕様書のA
         FindingAnomalies,　//異変を探す、仕様書のB
         GameOver,
         GameClear
@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.Tutorial:
                 Tutorial();
                 break;
-            case GameState.AnomalyDetermination:
+            case GameState.CheckAnomalies:
                 break;
             case GameState.FindingAnomalies:
                 break;
@@ -98,7 +98,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.Tutorial:
 
                 break;
-            case GameState.AnomalyDetermination:
+            case GameState.CheckAnomalies:
                 break;
             case GameState.FindingAnomalies:
                 break;
@@ -131,6 +131,8 @@ public class GameManager : Singleton<GameManager>
     public void ChangeToTitleState() => SetState(GameState.Title);
     public void ChangeToMenuState() => SetState(GameState.Menu);
     public void ChangeToTutorialState() => SetState(GameState.Tutorial);
+    public void ChangeToCheckAnomaliesState() => SetState(GameState.CheckAnomalies);
+
     public void ChangeToFindingAnomaliesState() => SetState(GameState.FindingAnomalies);
 
 

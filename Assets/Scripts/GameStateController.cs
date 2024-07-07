@@ -19,5 +19,9 @@ public class GameStateController : MonoBehaviour
         if (GameManager.Instance == null) return;
         GameManager.Instance.ChangeToFindingAnomaliesState();
     }
-
+    private void ChangeStateFindingAnomaries()
+    {
+        if (GameManager.Instance == null) return;
+        GameManager.Instance.ChangeToFindingAnomaliesState();
+    }
 }
