@@ -8,6 +8,9 @@ public class GameManager : Singleton<GameManager>
     public static GameManager Instance => I;
     protected override bool DestroyTargetGameObject => true;
 
+    public int CurrentNum = 0;//現在のシアターのカウント
+    CheckAnomalies checkAnomalies;
+
     bool isInGame = false;
 
     bool once = false;
@@ -17,7 +20,7 @@ public class GameManager : Singleton<GameManager>
         Title,
         Menu,
         Tutorial,//インゲーム初めの異変がない状態
-        CheckAnomalies, //異変判定、仕様書のA
+        CheckAnomaliesState, //異変判定、仕様書のA
         FindingAnomalies,　//異変を探す、仕様書のB
         GameOver,
         GameClear
@@ -47,7 +50,10 @@ public class GameManager : Singleton<GameManager>
         if (!once && isInGame)
         {
             ChangeToTutorialState();
+            checkAnomalies = GameObject.Find("GameStateController").GetComponent<CheckAnomalies>();
+
             once = true;
+
         }
         StateHandler();
     }
@@ -66,7 +72,8 @@ public class GameManager : Singleton<GameManager>
             case GameState.Tutorial:
                 Tutorial();
                 break;
-            case GameState.CheckAnomalies:
+            case GameState.CheckAnomaliesState:
+                CheckAnomaly();
                 break;
             case GameState.FindingAnomalies:
                 break;
@@ -85,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     public void SetState(GameState newState)
     {
         currentState = newState;
+        Debug.Log("状態変更:"+currentState);
         //状態の初期化処理を入れる
         switch (currentState)
         {
@@ -98,7 +106,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.Tutorial:
 
                 break;
-            case GameState.CheckAnomalies:
+            case GameState.CheckAnomaliesState:
                 break;
             case GameState.FindingAnomalies:
                 break;
@@ -128,10 +136,16 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    private void CheckAnomaly()
+    {
+        checkAnomalies.Lottery();
+        ChangeToFindingAnomaliesState();
+    }
+
     public void ChangeToTitleState() => SetState(GameState.Title);
     public void ChangeToMenuState() => SetState(GameState.Menu);
     public void ChangeToTutorialState() => SetState(GameState.Tutorial);
-    public void ChangeToCheckAnomaliesState() => SetState(GameState.CheckAnomalies);
+    public void ChangeToCheckAnomaliesState() => SetState(GameState.CheckAnomaliesState);
 
     public void ChangeToFindingAnomaliesState() => SetState(GameState.FindingAnomalies);
 

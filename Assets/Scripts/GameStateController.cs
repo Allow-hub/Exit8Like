@@ -6,22 +6,22 @@ public class GameStateController : MonoBehaviour
 {
     private void OnEnable()
     {
-        TurnBackCollider.onTurnBack += ChangeStateFindingAnomaries;
+        TurnBackCollider.onTurnBack += ChangeStateCheckAnomalies;
     }
 
     private void OnDisable()
     {
-        TurnBackCollider.onTurnBack -= ChangeStateFindingAnomaries;
+        TurnBackCollider.onTurnBack -= ChangeStateCheckAnomalies;
     }
 
-    private void ChangeStateFindingAnomaries()
+    //private void ChangeStateFindingAnomaries()
+    //{
+    //    if (GameManager.Instance == null) return;
+    //    GameManager.Instance.ChangeToFindingAnomaliesState();
+    //}
+    private void ChangeStateCheckAnomalies()
     {
         if (GameManager.Instance == null) return;
-        GameManager.Instance.ChangeToFindingAnomaliesState();
-    }
-    private void ChangeStateFindingAnomaries()
-    {
-        if (GameManager.Instance == null) return;
-        GameManager.Instance.ChangeToFindingAnomaliesState();
+        GameManager.Instance.ChangeToCheckAnomaliesState();
     }
 }
