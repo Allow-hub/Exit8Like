@@ -7,21 +7,24 @@ public class GameManager : Singleton<GameManager>
 {
     public static GameManager Instance => I;
     protected override bool DestroyTargetGameObject => true;
-
-    public int CurrentNum = 0;//現在のシアターのカウント
+    public GameObject player;
+    public int CurrentNum = 0; // 現在のシアターのカウント
     CheckAnomalies checkAnomalies;
 
+    public bool isExsitAnomaly = false; // 異変があるか
+    public bool isBack = false; // 引き戻したか
     bool isInGame = false;
 
     bool once = false;
+    bool titleStateSet = false; // タイトルステートが設定されたかどうか
 
     public enum GameState
     {
         Title,
         Menu,
-        Tutorial,//インゲーム初めの異変がない状態
-        CheckAnomaliesState, //異変判定、仕様書のA
-        FindingAnomalies,　//異変を探す、仕様書のB
+        Tutorial, // インゲーム初めの異変がない状態
+        CheckAnomaliesState, // 異変判定、仕様書のA
+        FindingAnomalies, // 異変を探す、仕様書のB
         GameOver,
         GameClear
     }
@@ -30,8 +33,11 @@ public class GameManager : Singleton<GameManager>
     protected override void Init()
     {
         base.Init();
+        // VSyncCount を Dont Sync に変更
+        QualitySettings.vSyncCount = 0;
+        // 144fpsを目標に設定
+        Application.targetFrameRate = 144;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -39,26 +45,30 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "InGame")
         {
             isInGame = true;
+            titleStateSet = false; 
         }
         else
         {
             once = false;
             isInGame = false;
-            ChangeToTitleState();
+            if (!titleStateSet)
+            {
+                ChangeToTitleState();
+                titleStateSet = true; 
+            }
         }
 
         if (!once && isInGame)
         {
             ChangeToTutorialState();
             checkAnomalies = GameObject.Find("GameStateController").GetComponent<CheckAnomalies>();
-
+            player = GameObject.Find("Player").gameObject;
             once = true;
-
         }
         StateHandler();
     }
 
-    //ゲームの状態を管理
+    // ゲームの状態を管理
     private void StateHandler()
     {
         switch (currentState)
@@ -88,57 +98,57 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
     }
-    //外側からゲームの状態を変更
+
+    // 外側からゲームの状態を変更
     public void SetState(GameState newState)
     {
         currentState = newState;
-        Debug.Log("状態変更:"+currentState);
-        //状態の初期化処理を入れる
+        Debug.Log("状態変更:" + currentState);
+        // 状態の初期化処理を入れる
         switch (currentState)
         {
             case GameState.Title:
-                //TitleInit();
+                // TitleInit();
                 break;
             case GameState.Menu:
-                //MenuInit();
+                // MenuInit();
                 break;
-       
             case GameState.Tutorial:
-
                 break;
             case GameState.CheckAnomaliesState:
                 break;
             case GameState.FindingAnomalies:
                 break;
             case GameState.GameOver:
-                //GameOverInit();
+                // GameOverInit();
                 break;
         }
     }
+
     private void Title()
     {
-
     }
+
     private void Menu()
     {
-
     }
+
     private void Tutorial()
     {
-
     }
+
     private void GameOver()
     {
-
     }
+
     private void GameClear()
     {
-
     }
 
     private void CheckAnomaly()
     {
-        checkAnomalies.Lottery();
+        checkAnomalies.Check(isBack);
+        checkAnomalies.Lottery(false);
         ChangeToFindingAnomaliesState();
     }
 
@@ -146,8 +156,6 @@ public class GameManager : Singleton<GameManager>
     public void ChangeToMenuState() => SetState(GameState.Menu);
     public void ChangeToTutorialState() => SetState(GameState.Tutorial);
     public void ChangeToCheckAnomaliesState() => SetState(GameState.CheckAnomaliesState);
-
     public void ChangeToFindingAnomaliesState() => SetState(GameState.FindingAnomalies);
-
-
+    public void ChangeToGameClearState() => SetState(GameState.GameClear);
 }

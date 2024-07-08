@@ -7,18 +7,26 @@ public class GameStateController : MonoBehaviour
     private void OnEnable()
     {
         TurnBackCollider.onTurnBack += ChangeStateCheckAnomalies;
+        NotBackCollider.onNotBack += ChangeStateCheckAnomalies;
     }
 
     private void OnDisable()
     {
-        TurnBackCollider.onTurnBack -= ChangeStateCheckAnomalies;
+        TurnBackCollider.onTurnBack -= ChangeStateCheckAnomalies; 
+        NotBackCollider.onNotBack -= ChangeStateCheckAnomalies;
     }
 
-    //private void ChangeStateFindingAnomaries()
-    //{
-    //    if (GameManager.Instance == null) return;
-    //    GameManager.Instance.ChangeToFindingAnomaliesState();
-    //}
+    private void Update()
+    {
+           if(CanClear())
+            GameManager.Instance.ChangeToGameClearState();
+    }
+
+    private bool CanClear()
+    {
+        if (GameManager.Instance == null) return false;
+        return GameManager.Instance.CurrentNum >= 8;
+    }
     private void ChangeStateCheckAnomalies()
     {
         if (GameManager.Instance == null) return;

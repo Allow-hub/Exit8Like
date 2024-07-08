@@ -12,6 +12,7 @@ public class TurnBackCollider : MonoBehaviour
         if (onTurnBack == null) return;
         if (other.gameObject.CompareTag("Player"))
         {
+            GameManager.Instance.isBack = true;
             onTurnBack?.Invoke();
         }
     }

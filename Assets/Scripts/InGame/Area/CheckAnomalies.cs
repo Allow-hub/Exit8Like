@@ -6,24 +6,13 @@ public class CheckAnomalies : MonoBehaviour
 {
     [SerializeField] private GameObject anomalyParent;
     [SerializeField] private GameObject notAnomalyObject;
+    [SerializeField] private GameObject notAnomalyArea;
     [SerializeField] private float initProb = 20;
+    [SerializeField] private float addPosition = 119;
     private float currentProb;//異変が選ばれなかったとき加算するため
     private const float addProb = 20;
     private List<GameObject> anomalyObjects = new List<GameObject>();
     private AnomalyBase anomalyBase;
-
-    private bool existAnomaly=false;
-
-    private void OnEnable()
-    {
-        TurnBackCollider.onTurnBack += Check;
-    }
-
-    private void OnDisable()
-    {
-        TurnBackCollider.onTurnBack -= Check;
-    }
-
     private void Awake()
     {
         currentProb = initProb;
@@ -41,7 +30,6 @@ public class CheckAnomalies : MonoBehaviour
                 childObject.SetActive(false); // 子オブジェクトを非アクティブにする
             }
 
-            // Lottery() メソッドは必要なタイミングで呼び出す
         }
         else
         {
@@ -51,14 +39,16 @@ public class CheckAnomalies : MonoBehaviour
     }
     private void Start()
     {
-        Lottery();
+        Lottery(true);
     }
 
     //抽選
-    public void Lottery()
+    public void Lottery(bool isTutorial)
     {
         int anomalyProb = Random.Range(0, 100);
-        if (currentProb <= anomalyProb)
+        if (isTutorial)
+            anomalyProb = 100;
+        if (anomalyProb<=currentProb)
         {
             Anomaly();
         }
@@ -71,14 +61,20 @@ public class CheckAnomalies : MonoBehaviour
 
     private void NotAnomaly()
     {
-        notAnomalyObject.gameObject.SetActive(true);
-        existAnomaly = false;
+        if (GameManager.Instance == null) return;
+        GameManager.Instance.isExsitAnomaly = false;
+        for (int i = 0; i < anomalyObjects.Count; i++)
+        {
+            anomalyObjects[i].SetActive(false);
+        }
+        notAnomalyArea.gameObject.SetActive(true);
         currentProb += addProb;
     }
 
     private void Anomaly()
     {
-        notAnomalyObject.gameObject.SetActive(false);
+        notAnomalyArea.gameObject.SetActive(false);
+
         // 異常が非アクティブなインデックスを保持するリストを作成する
         List<int> notClearIndices = new List<int>();
 
@@ -97,7 +93,7 @@ public class CheckAnomalies : MonoBehaviour
         // IsClear が false の異常が見つからない場合は警告を出して処理を終了する
         if (notClearIndices.Count == 0)
         {
-            Debug.LogWarning("IsClear が false の異常が見つかりませんでした。");
+            Debug.LogError("IsClear が false の異常が見つかりませんでした。");
             NotAnomaly();
             return;
         }
@@ -109,24 +105,51 @@ public class CheckAnomalies : MonoBehaviour
         // 選ばれた異常をアクティブにする
         anomalyBase = anomalyObjects[selectedIndex].GetComponent<AnomalyBase>();
         anomalyObjects[selectedIndex].SetActive(true);
-
+        //anomalyObjects[selectedIndex].gameObject.transform.position = anomalyParent.transform.position;
         // 必要に応じて、選ばれた異常の情報をログ出力する
         Debug.Log("選択された異常: " + anomalyObjects[selectedIndex].name);
         currentProb = initProb;
-        existAnomaly = true;
+        if (GameManager.Instance == null) return;
+        GameManager.Instance.isExsitAnomaly = true;
     }
 
-    //異変の正誤
-    public void Check()
+    //異変の正誤、引数は戻ったときtrue、進んだときfalse
+    public void Check(bool isBack)
     {
         if (GameManager.Instance == null) return;
-        if (existAnomaly)
+        Rigidbody rb =GameManager.Instance.player.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        //異変があるときに
+        if (GameManager.Instance.isExsitAnomaly)
         {
+            //戻ると加算
+            if(isBack)
+            {
+                GameManager.Instance.CurrentNum++;
+            }
+            else
+            {
+                notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 
+                anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
+
+                GameManager.Instance.CurrentNum = 0;
+            }
         }
         else
         {
+            if (isBack)
+            {
 
+                GameManager.Instance.CurrentNum = 0;
+            }
+            else
+            {
+                notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
+
+                anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
+                GameManager.Instance.CurrentNum++;
+            }
         }
     }
 }
