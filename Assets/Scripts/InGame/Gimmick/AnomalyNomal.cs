@@ -10,6 +10,7 @@ public class AnomalyNomal : AnomalyBase
     [SerializeField] private bool isClear = false;
     [SerializeField] private float distanceFromPlayer = 200f;
     [SerializeField] private Sprite changeSprite;
+    private Sprite initSprite;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class AnomalyNomal : AnomalyBase
     // Update is called once per frame
     void Update()
     {
-        PlayAnomaly(this.gameObject);
+        //PlayAnomaly(this.gameObject);
     }
 
     private void SetProperety()
@@ -27,6 +28,7 @@ public class AnomalyNomal : AnomalyBase
         IsClear = isClear;
         DistanceFromPlayer = distanceFromPlayer;
         spriteRenderer= gameObject.GetComponent<SpriteRenderer>();
+        initSprite=spriteRenderer.sprite;
     }
 
     public override void Animation()
@@ -34,4 +36,10 @@ public class AnomalyNomal : AnomalyBase
         base.Animation();
         spriteRenderer.sprite = changeSprite;
     }
+
+    public override void ReverseAnomaly()
+    {
+        spriteRenderer.sprite = initSprite;
+    }
+
 }

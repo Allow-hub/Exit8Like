@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameStateController : MonoBehaviour
 {
+    bool once=false;
     private void OnEnable()
     {
         TurnBackCollider.onTurnBack += ChangeStateCheckAnomalies;
@@ -18,8 +19,11 @@ public class GameStateController : MonoBehaviour
 
     private void Update()
     {
-           if(CanClear())
+        if (CanClear() && !once)
+        {
             GameManager.Instance.ChangeToGameClearState();
+            once = true;
+        }
     }
 
     private bool CanClear()

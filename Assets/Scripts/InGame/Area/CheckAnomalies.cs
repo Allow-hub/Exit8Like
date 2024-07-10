@@ -7,27 +7,24 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private GameObject anomalyParent;
     [SerializeField] private GameObject notAnomalyObject;
     [SerializeField] private GameObject notAnomalyArea;
-    [SerializeField] private float initProb = 20;
+    [SerializeField] private float initProb = 40;
     [SerializeField] private float addPosition = 119;
     private float currentProb;//異変が選ばれなかったとき加算するため
     private const float addProb = 20;
-    private List<GameObject> anomalyObjects = new List<GameObject>();
-    private AnomalyBase anomalyBase;
+    private List<AnomalyBase> anomalyObjects = new List<AnomalyBase>();
+
+    private AnomalyBase anomalyBaseCheck;
     private void Awake()
     {
         currentProb = initProb;
         // anomalyParent がnullでないことを確認
         if (anomalyParent != null)
         {
-            // anomalyParent の子オブジェクトの数を取得
-            int childCount = anomalyParent.transform.childCount;
-
-            // 子オブジェクトをリストに追加していく
-            for (int i = 0; i < childCount; i++)
+            // AnomalyBase コンポーネントを持つすべてのオブジェクトを取得
+            AnomalyBase[] anomalies = FindObjectsOfType<AnomalyBase>();
+            foreach (AnomalyBase anomaly in anomalies)
             {
-                GameObject childObject = anomalyParent.transform.GetChild(i).gameObject;
-                anomalyObjects.Add(childObject);
-                childObject.SetActive(false); // 子オブジェクトを非アクティブにする
+                anomalyObjects.Add(anomaly);
             }
 
         }
@@ -63,10 +60,6 @@ public class CheckAnomalies : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
         GameManager.Instance.isExsitAnomaly = false;
-        for (int i = 0; i < anomalyObjects.Count; i++)
-        {
-            anomalyObjects[i].SetActive(false);
-        }
         notAnomalyArea.gameObject.SetActive(true);
         currentProb += addProb;
     }
@@ -81,13 +74,11 @@ public class CheckAnomalies : MonoBehaviour
         // 異常が IsClear が false の場合にそのインデックスをリストに追加する
         for (int i = 0; i < anomalyObjects.Count; i++)
         {
-            AnomalyBase anomaly = anomalyObjects[i].GetComponent<AnomalyBase>();
-
-            if (anomaly != null && !anomaly.IsClear)
+            Debug.Log(anomalyObjects[i].IsClear);
+            if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
             {
                 notClearIndices.Add(i);
             }
-            anomalyObjects[i].SetActive(false);
         }
 
         // IsClear が false の異常が見つからない場合は警告を出して処理を終了する
@@ -102,12 +93,10 @@ public class CheckAnomalies : MonoBehaviour
         int randomIndex = Random.Range(0, notClearIndices.Count);
         int selectedIndex = notClearIndices[randomIndex];
 
-        // 選ばれた異常をアクティブにする
-        anomalyBase = anomalyObjects[selectedIndex].GetComponent<AnomalyBase>();
-        anomalyObjects[selectedIndex].SetActive(true);
-        //anomalyObjects[selectedIndex].gameObject.transform.position = anomalyParent.transform.position;
-        // 必要に応じて、選ばれた異常の情報をログ出力する
+       // 必要に応じて、選ばれた異常の情報をログ出力する
         Debug.Log("選択された異常: " + anomalyObjects[selectedIndex].name);
+        anomalyBaseCheck = anomalyObjects[selectedIndex];
+        anomalyBaseCheck.PlayAnomaly(anomalyBaseCheck.gameObject);
         currentProb = initProb;
         if (GameManager.Instance == null) return;
         GameManager.Instance.isExsitAnomaly = true;
@@ -126,13 +115,15 @@ public class CheckAnomalies : MonoBehaviour
             if(isBack)
             {
                 GameManager.Instance.CurrentNum++;
+                anomalyBaseCheck.IsClear = true;
+                anomalyBaseCheck.ReverseAnomaly();
             }
             else
             {
                 notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 
                 anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
-
+ 
                 GameManager.Instance.CurrentNum = 0;
             }
         }
@@ -148,6 +139,7 @@ public class CheckAnomalies : MonoBehaviour
                 notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 
                 anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
+  
                 GameManager.Instance.CurrentNum++;
             }
         }
