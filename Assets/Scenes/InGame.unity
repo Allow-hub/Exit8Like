@@ -875,6 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b598e8ab2b677e41beb0c2c19f34b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   isClear: 0
   distanceFromPlayer: 2
 --- !u!1 &225078373
@@ -2314,6 +2315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b598e8ab2b677e41beb0c2c19f34b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   isClear: 0
   distanceFromPlayer: 2
 --- !u!1 &492324497
@@ -5989,6 +5991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1383041368}
   - component: {fileID: 1383041369}
+  - component: {fileID: 1383041370}
   m_Layer: 0
   m_Name: ticket
   m_TagString: Untagged
@@ -6063,6 +6066,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1383041370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383041367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1383041369}
+  isClear: 0
+  distanceFromPlayer: 200
+  changeSprite: {fileID: 21300000, guid: 13fe6812b58372f46b216887d8988f1a, type: 3}
 --- !u!1 &1396658427
 GameObject:
   m_ObjectHideFlags: 0

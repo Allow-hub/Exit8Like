@@ -6,8 +6,19 @@ public class AnomalyBase : MonoBehaviour
 {
     public bool IsClear {  get; set; }
     public float DistanceFromPlayer { get; set; } //異変を起こすプレイヤーとの距離
+    public  SpriteRenderer spriteRenderer;
 
-    public virtual void PlayAnomaly(GameObject obj)
+    public  void PlayAnomaly(GameObject obj)
+    {
+       float distance = Vector3.Distance(obj.transform.position, GameManager.Instance.player.transform.position);
+
+        if (distance <= DistanceFromPlayer)
+        {
+            Animation();
+        }
+    }
+
+    public virtual void Animation() 
     {
         
     }
