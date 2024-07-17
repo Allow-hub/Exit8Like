@@ -8,6 +8,7 @@ using UnityEngine;
 public class AnomalyNomal : AnomalyBase
 {
     [SerializeField] private bool isClear = false;
+
     [SerializeField] private float distanceFromPlayer = 200f;
     [SerializeField] private Sprite changeSprite;
     private Sprite initSprite;
@@ -20,8 +21,8 @@ public class AnomalyNomal : AnomalyBase
     // Update is called once per frame
     void Update()
     {
-        PlayAnomaly(this.gameObject);
-        Debug.Log(gameObject);
+        //CheckAnomalies‚ÅŒÄ‚ñ‚Å‚¢‚é
+        //PlayAnomaly(this.gameObject);
     }
 
     private void SetProperety()

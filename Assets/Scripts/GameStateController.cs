@@ -29,7 +29,7 @@ public class GameStateController : MonoBehaviour
     private bool CanClear()
     {
         if (GameManager.Instance == null) return false;
-        return GameManager.Instance.CurrentNum >= 8;
+        return GameManager.Instance.CurrentNum >= 9;
     }
     private void ChangeStateCheckAnomalies()
     {

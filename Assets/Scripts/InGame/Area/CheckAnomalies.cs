@@ -114,9 +114,17 @@ public class CheckAnomalies : MonoBehaviour
             //–ß‚é‚Æ‰ÁŽZ
             if(isBack)
             {
-                GameManager.Instance.CurrentNum++;
-                anomalyBaseCheck.IsClear = true;
-                anomalyBaseCheck.ReverseAnomaly();
+                if (GameManager.Instance.CurrentNum != 8)
+                {
+                    GameManager.Instance.CurrentNum++;
+                    anomalyBaseCheck.IsClear = true;
+                    anomalyBaseCheck.ReverseAnomaly();
+                }else if(GameManager.Instance.CurrentNum == 8)
+                {
+                    anomalyBaseCheck.IsClear = true;
+                    anomalyBaseCheck.ReverseAnomaly();
+
+                }
             }
             else
             {
