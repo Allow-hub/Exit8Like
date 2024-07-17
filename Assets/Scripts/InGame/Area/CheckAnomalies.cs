@@ -7,7 +7,7 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private GameObject anomalyParent;
     [SerializeField] private GameObject notAnomalyObject;
     [SerializeField] private GameObject notAnomalyArea;
-    [SerializeField] private float initProb = 40;
+    [SerializeField] private float initProb = 100;
     [SerializeField] private float addPosition = 119;
     private float currentProb;//ˆÙ•Ï‚ª‘I‚Î‚ê‚È‚©‚Á‚½‚Æ‚«‰ÁŽZ‚·‚é‚½‚ß
     private const float addProb = 20;

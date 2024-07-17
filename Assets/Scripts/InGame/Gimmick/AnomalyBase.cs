@@ -12,7 +12,7 @@ public class AnomalyBase : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
        float distance = Vector3.Distance(obj.transform.position, GameManager.Instance.player.transform.position);
-
+        Debug.Log(distance);
         if (distance <= DistanceFromPlayer)
         {
             Animation();

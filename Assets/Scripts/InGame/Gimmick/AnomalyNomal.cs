@@ -20,7 +20,8 @@ public class AnomalyNomal : AnomalyBase
     // Update is called once per frame
     void Update()
     {
-        //PlayAnomaly(this.gameObject);
+        PlayAnomaly(this.gameObject);
+        Debug.Log(gameObject);
     }
 
     private void SetProperety()
