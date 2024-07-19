@@ -5416,13 +5416,12 @@ MonoBehaviour:
   anomalyPoster: {fileID: 1574060214}
   blackEye: {fileID: 65465770}
   whiteEye: {fileID: 889724110}
-  target: {fileID: 1057206668}
-  RightEyeParts1: {fileID: 0}
-  RightEyeParts2: {fileID: 0}
-  LeftEyeParts1: {fileID: 0}
-  LeftEyeParts2: {fileID: 0}
-  player: {fileID: 1057206669}
-  moveSpeed: 1
+  RightEyeParts1: {fileID: 1573003988}
+  RightEyeParts2: {fileID: 407396592}
+  LeftEyeParts1: {fileID: 621274473}
+  LeftEyeParts2: {fileID: 132552878}
+  player: {fileID: 1031619087}
+  moveSpeed: 5
 --- !u!1 &1501451415
 GameObject:
   m_ObjectHideFlags: 0
