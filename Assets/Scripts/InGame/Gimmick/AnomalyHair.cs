@@ -16,13 +16,14 @@ public class AnomalyHair : AnomalyBase
     private void Start()
     {
         SetProperety();
-        StartCoroutine(ChangeSprite());
-        Move();
 
     }
-
-    private void Update()
+    public override void Animation()
     {
+        base.Animation();
+
+        StartCoroutine(ChangeSprite());
+        Move();
     }
 
     private void SetProperety()
