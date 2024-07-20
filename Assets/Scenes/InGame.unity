@@ -308,6 +308,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 21ee6f366e665b04298def96ed6b8c90, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &75346103
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +685,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 7c98ad3cdb8cbfb40b470eabe677a58e, type: 3}
+  number: 0
+  explain: 
 --- !u!114 &139613119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +703,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: e68d31dad8fc47448a91ae58b5386e90, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &148092335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1597,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 10
   changeSprite: {fileID: 21300000, guid: ca0b182c6bfa9634e81a0aa9c2e4055e, type: 3}
+  number: 0
+  explain: 
 --- !u!212 &375742662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2089,6 +2097,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 1d2d6c48a945d2346b2f33b685e27132, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &477822981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2200,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 252fc11979b7d6e42a6050a190165bef, type: 3}
+  number: 5
+  explain: 
 --- !u!1 &492324497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2487,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: ee885f1d431263e4aa86b585e28a1b51, type: 3}
+  number: 0
+  explain: 
 --- !u!212 &601987602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2619,7 +2633,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610661800}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
   m_Name: 
@@ -2628,6 +2642,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 2187bbc50389e954abd5ef2a3dd66135, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &621274473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,6 +3051,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 948873bb8bfed444c86389822abd6177, type: 3}
+  number: 0
+  explain: 
 --- !u!114 &662010453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3051,6 +3069,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 13fe6812b58372f46b216887d8988f1a, type: 3}
+  number: 0
+  explain: 
 --- !u!212 &662010454
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3288,6 +3308,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 0}
+  number: 0
+  explain: 
 --- !u!1 &731191512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,6 +3648,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: a83cdaca84a379849828a49f35968bef, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &793378774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 793378775}
+  - component: {fileID: 793378776}
   m_Layer: 0
   m_Name: Kinenn
   m_TagString: Untagged
@@ -3659,6 +3684,33 @@ Transform:
   - {fileID: 1888287958}
   m_Father: {fileID: 1150796517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &793378776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793378774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f35127fc58e6b4fab2c0d6a14c09c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2073433135}
+  isClear: 0
+  distanceFromPlayer: 300
+  number: 10
+  explain: 
+  smoke:
+  - {fileID: 21300000, guid: 2435709bdd4a78c49bca1707e285aa81, type: 3}
+  - {fileID: 21300000, guid: 4e88442e5c006254580a6ae54cba5571, type: 3}
+  - {fileID: 21300000, guid: b36b02b433ab7604f81d66a25a9b287a, type: 3}
+  - {fileID: 21300000, guid: 32e8f4ce4d015b645879e456ad7e7034, type: 3}
+  - {fileID: 21300000, guid: 57ca4e9285f20c74daa0d06828aba944, type: 3}
+  coolDown: 0.15
+  disappearTime: 0.5
+  normal: {fileID: 413397445}
+  anomaly: {fileID: 1888287957}
 --- !u!1 &804351527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,6 +4174,7 @@ GameObject:
   - component: {fileID: 942581479}
   - component: {fileID: 942581478}
   - component: {fileID: 942581480}
+  - component: {fileID: 942581481}
   m_Layer: 0
   m_Name: GameStateController
   m_TagString: Untagged
@@ -4173,6 +4226,19 @@ MonoBehaviour:
   notAnomalyArea: {fileID: 527143898}
   initProb: 20
   addPosition: 120
+--- !u!114 &942581481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942581477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582458b3dbeccba4db4f0deea2c7a227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 10
 --- !u!1 &949521055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4780,6 +4846,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: d2ae73ff9e9b7874aad8bf91a1746165, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &1009430393
 GameObject:
   m_ObjectHideFlags: 0
@@ -5156,6 +5224,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 6201962c713a02c4885db08ac7d75d50, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &1057206668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,12 +5920,12 @@ PrefabInstance:
     - target: {fileID: 1036378244304213529, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99
+      value: 30.1
       objectReference: {fileID: 0}
     - target: {fileID: 1036378244304213529, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7
+      value: -5.7
       objectReference: {fileID: 0}
     - target: {fileID: 1036378244304213529, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
         type: 3}
@@ -5899,6 +5969,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089671140882319798, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 86ae453204d14544ebbf57ebdcf12f13,
+        type: 3}
+    - target: {fileID: 4089671140882319798, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
+        type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
@@ -5911,6 +5987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406967340591098074, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6881,7 +6962,9 @@ MonoBehaviour:
   moveHair: {fileID: 1869460046}
   coolDown: 0.5
   moveSpeed: -4
-  rb: {fileID: 0}
+  rb: {fileID: 1869460049}
+  number: 0
+  explain: 
 --- !u!1 &1524036137
 GameObject:
   m_ObjectHideFlags: 0
@@ -7165,13 +7248,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1136925555737141005, guid: d880233af78b10b4baee8323b6134e8c,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.9411764
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136925555737141005, guid: d880233af78b10b4baee8323b6134e8c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9411764
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136925555737141005, guid: d880233af78b10b4baee8323b6134e8c,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3700027
+      value: 7.352941
       objectReference: {fileID: 0}
     - target: {fileID: 1136925555737141005, guid: d880233af78b10b4baee8323b6134e8c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.2200003
+      value: 7.235294
       objectReference: {fileID: 0}
     - target: {fileID: 1136925555737141005, guid: d880233af78b10b4baee8323b6134e8c,
         type: 3}
@@ -7223,7 +7316,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8192716403301741372, guid: d880233af78b10b4baee8323b6134e8c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3910653199715587214, guid: d880233af78b10b4baee8323b6134e8c, type: 3}
     m_AddedGameObjects: []
@@ -7749,6 +7843,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: dbf2e9b8cd8f73741a274eaa0324eedb, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &1742505777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7851,6 +7947,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: d59f8328f1542a3408dbd2f4e14f23c4, type: 3}
+  number: 0
+  explain: 
 --- !u!114 &1742505781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7867,6 +7965,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: eecacee8e309fa444beb6b8712d88528, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &1746058690
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,6 +8215,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1278503125}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1869460049 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4600424381592651521, guid: 6bd61f9acfcf3e3438de6539ea2e16ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1278503125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878222676
 GameObject:
   m_ObjectHideFlags: 0
@@ -8164,6 +8270,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: e31acc1d9bd3c7f44bc5279d0f8978fb, type: 3}
+  number: 0
+  explain: 
 --- !u!212 &1878222679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8327,7 +8435,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 22.199997, y: 4.55, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.34, y: 0.34, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 761769528}
@@ -8374,7 +8482,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a639ebd1db61184b95c9cc0f3255580, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60565376ec5a73f4ca6c694391f7ac03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8762,6 +8870,8 @@ MonoBehaviour:
   isClear: 0
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: af9f9476cbd9a4d44a573a69ceba0f0f, type: 3}
+  number: 0
+  explain: 
 --- !u!1 &1983836933
 GameObject:
   m_ObjectHideFlags: 0
@@ -9079,6 +9189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 1946867551}
   player: {fileID: 1031619087}
+--- !u!212 &2073433135 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1746412380366113434, guid: d880233af78b10b4baee8323b6134e8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606406701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
