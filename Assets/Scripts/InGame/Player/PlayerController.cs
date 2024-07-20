@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 moveDirection = playerInput.InputVector.normalized;
-        lastInput = playerInput.InputVector.x != 0 ? playerInput.InputVector : lastInput;
+        //lastInput = playerInput.InputVector.x != 0 ? playerInput.InputVector : lastInput;
 
         //// ¶‰E‚ÌŒü‚«‚É‰ž‚¶‚Ä‰ñ“]Šp“x‚ðÝ’è
         //float targetRotation = lastInput.x > 0 ? 0f : 180f;

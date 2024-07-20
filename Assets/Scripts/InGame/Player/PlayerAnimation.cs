@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -7,24 +8,50 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private Sprite[] PlayerLeft;
     [SerializeField] private Sprite[] PlayerRight;
-    [SerializeField] private float Cooldown;
+    [SerializeField] private float Cooldown = 0.5f;
+
+    private SpriteRenderer spriteRenderer;
+    private bool reverseOrder = false;
+        
 
     // Start is called before the first frame update
     void Start()
     {
-        Animation();
+
     }
 
     private void Animation()
     {
-        StartCoroutine(ChangeSprite());
+        StartCoroutine(RightChangeSprite());
+        StartCoroutine(LeftChangeSprite());
     }
    
-    private IEnumerator ChangeSprite()
+    private IEnumerator RightChangeSprite()
     {
         while (true)
         {
+            if (!reverseOrder)
+            for (int i = 0; i < PlayerLeft.Length; i++)
+            {
+                spriteRenderer.sprite = PlayerLeft[i];
+                yield return new WaitForSeconds(Cooldown);
+            }
+            else
+            {
+                for (int i = 0;i < PlayerRight.Length -1; i--) { }
+            }
+        }
+    }
 
+    private IEnumerator LeftChangeSprite()
+    {
+        while (true)
+        {
+            for (int i = 0; i < PlayerRight.Length; i++)
+            {
+                spriteRenderer.sprite = PlayerRight[i];
+                yield return new WaitForSeconds(Cooldown);
+            }
         }
     }
 
