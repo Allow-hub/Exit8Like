@@ -23,10 +23,10 @@ public class AnomalyBase : MonoBehaviour
 
     public virtual void Animation() 
     {
-
+        IsAnomaly = true;
     }
     public virtual void ReverseAnomaly()
     {
-
+        IsAnomaly=false;
     }
 }

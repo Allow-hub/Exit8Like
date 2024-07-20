@@ -5,8 +5,10 @@ using UnityEngine;
 public class AnomalyClerk : AnomalyBase
 {
     [SerializeField] private bool isClear = false;
+    [SerializeField] private GameObject player;
     [SerializeField] private float distanceFromPlayer = 2f;
     Vector3 playerPos;
+    private int count = 0;
     private void Start()
     {
         SetProperety();
@@ -27,25 +29,27 @@ public class AnomalyClerk : AnomalyBase
     }
     IEnumerator ChangeSprite()
     {
-        if (GameManager.Instance == null) yield  break;
-
-        playerPos = GameManager.Instance.player.transform.position;
-        Vector3 anomalyPos = transform.position;
-        Vector3 localAnomalyPos = transform.InverseTransformPoint(playerPos);
-
-        if (localAnomalyPos.x > 0)
+        while (true)
         {
-            Debug.Log("Player is to the right of the anomaly.");
+            //count++;
+            //if (count >= 100000) yield break;
+            playerPos = player.transform.position;
+            Vector3 anomalyPos = transform.position;
+            Vector3 localAnomalyPos = transform.InverseTransformPoint(playerPos);
+            if (localAnomalyPos.x > 0)
+            {
+                Debug.Log("Player is to the right of the anomaly.");
+            }
+            else if (localAnomalyPos.x < 0)
+            {
+                Debug.Log("Player is to the left of the anomaly.");
+            }
+            else
+            {
+                Debug.Log("Player is exactly at the anomaly.");
+            }
+            yield return new WaitForSeconds(0.1f);
         }
-        else if (localAnomalyPos.x < 0)
-        {
-            Debug.Log("Player is to the left of the anomaly.");
-        }
-        else
-        {
-            Debug.Log("Player is exactly at the anomaly.");
-        }
-
         yield return null;
     }
 
