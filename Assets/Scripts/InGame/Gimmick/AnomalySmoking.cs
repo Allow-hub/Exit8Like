@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AnomalySmoking : AnomalyBase
@@ -9,22 +8,22 @@ public class AnomalySmoking : AnomalyBase
     [SerializeField] private float distanceFromPlayer = 2f;
     [SerializeField] private Sprite[] smoke;
     [SerializeField] private float coolDown = 0.3f;
-
-
+    [SerializeField] private float disappearTime = 0.5f; // 煙が消える時間を追加
 
     private bool reverseOrder = false;
-
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         SetProperety();
+        Animation(); // テスト用に呼び出し
     }
 
     public override void Animation()
     {
         base.Animation();
-
         StartCoroutine(ChangeSprite());
     }
 
@@ -34,28 +33,20 @@ public class AnomalySmoking : AnomalyBase
         DistanceFromPlayer = distanceFromPlayer;
     }
 
-    
-
     private IEnumerator ChangeSprite()
     {
         while (true)
         {
-            if (!reverseOrder)
+
+            for (int i = 0; i < smoke.Length; i++)
             {
-                for (int i = 0; i < smoke.Length; i++)
-                {
-                    spriteRenderer.sprite = smoke[i];
-                    yield return new WaitForSeconds(coolDown);
-                }
+                spriteRenderer.sprite = smoke[i];
+                yield return new WaitForSeconds(coolDown);
             }
-            else
-            {
-                for (int i = smoke.Length - 1; i >= 0; i--)
-                {
-                    spriteRenderer.sprite = smoke[i];
-                    yield return new WaitForSeconds(coolDown);
-                }
-            }
+
+            // スプライトを消す
+            spriteRenderer.sprite = null;
+            yield return new WaitForSeconds(disappearTime);
         }
     }
 }
