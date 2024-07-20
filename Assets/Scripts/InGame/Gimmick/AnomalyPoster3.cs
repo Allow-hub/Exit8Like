@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class AnomalyPoster3 : AnomalyBase
 {
+    [SerializeField] private bool isClear = false;
     [SerializeField] private GameObject poster;
     [SerializeField] private GameObject anomalyPoster;
     [SerializeField] private GameObject blackEye;
