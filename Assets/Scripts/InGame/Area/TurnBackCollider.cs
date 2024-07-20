@@ -32,7 +32,7 @@ public class TurnBackCollider : MonoBehaviour
         playerController.enabled = false;
         RectTransform rectTransform = fade.GetComponent<RectTransform>();
         Vector2 startSize = new Vector2(0, 0);
-        Vector2 endSize = new Vector2(1920, 1920);
+        Vector2 endSize = new Vector2(2500, 2500);
         float duration = 1.0f;
         float elapsedTime = 0f;
 
@@ -50,7 +50,7 @@ public class TurnBackCollider : MonoBehaviour
     private IEnumerator FadeOut()
     {
         RectTransform rectTransform = fade.GetComponent<RectTransform>();
-        Vector2 startSize = new Vector2(1920, 1920);
+        Vector2 startSize = new Vector2(2500, 2500);
         Vector2 endSize = new Vector2(0, 0);
         float duration = 1.0f;
         float elapsedTime = 0f;

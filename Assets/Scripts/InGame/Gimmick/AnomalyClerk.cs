@@ -6,25 +6,30 @@ public class AnomalyClerk : AnomalyBase
 {
     [SerializeField] private bool isClear = false;
     [SerializeField] private GameObject player;
+    [SerializeField] private Sprite right, left, initSprite;
     [SerializeField] private float distanceFromPlayer = 2f;
+    [SerializeField] private int number;
+    [SerializeField] private string explain;
     Vector3 playerPos;
     private int count = 0;
     private void Start()
     {
         SetProperety();
-        StartCoroutine(ChangeSprite());
     }
 
     private void SetProperety()
     {
         IsClear = isClear;
         DistanceFromPlayer = distanceFromPlayer;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
+        Number = number;
+        Explain = explain;
     }
 
     public override void Animation()
     {
         base.Animation();
+        StartCoroutine(ChangeSprite());
 
     }
     IEnumerator ChangeSprite()
@@ -36,21 +41,23 @@ public class AnomalyClerk : AnomalyBase
             playerPos = player.transform.position;
             Vector3 anomalyPos = transform.position;
             Vector3 localAnomalyPos = transform.InverseTransformPoint(playerPos);
-            if (localAnomalyPos.x > 0)
+            if (localAnomalyPos.x > 0.5f)
             {
-                Debug.Log("Player is to the right of the anomaly.");
+                spriteRenderer.sprite = right;
             }
-            else if (localAnomalyPos.x < 0)
+            else if (localAnomalyPos.x < -0.5f)
             {
-                Debug.Log("Player is to the left of the anomaly.");
+                spriteRenderer.sprite =left;
             }
             else
             {
-                Debug.Log("Player is exactly at the anomaly.");
+                spriteRenderer.sprite = initSprite;
             }
             yield return new WaitForSeconds(0.1f);
         }
-        yield return null;
     }
-
+    public override void ReverseAnomaly()
+    {
+        spriteRenderer.sprite = initSprite;
+    }
 }

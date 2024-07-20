@@ -3381,7 +3381,12 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1764634342}
   isClear: 0
   player: {fileID: 1933121241}
+  right: {fileID: 21300000, guid: 71d6beed46357f04a9fca32316254941, type: 3}
+  left: {fileID: 21300000, guid: 3765bf501fdcefb42818d478d236915b, type: 3}
+  initSprite: {fileID: 21300000, guid: 662ef41bde75cdd43995620c875d9ed5, type: 3}
   distanceFromPlayer: 200
+  number: 0
+  explain: 
 --- !u!212 &1764634342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3819,7 +3824,7 @@ GameObject:
   - component: {fileID: 1933121243}
   - component: {fileID: 1933121242}
   m_Layer: 0
-  m_Name: syujinkou 1
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
