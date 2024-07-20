@@ -34,14 +34,14 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = playerInput.InputVector.normalized;
         lastInput = playerInput.InputVector.x != 0 ? playerInput.InputVector : lastInput;
 
-        // 左右の向きに応じて回転角度を設定
-        float targetRotation = lastInput.x > 0 ? 0f : 180f;
+        //// 左右の向きに応じて回転角度を設定
+        //float targetRotation = lastInput.x > 0 ? 0f : 180f;
 
-        // 現在のプレイヤーの角度を取得
-        Vector3 currentRotation = playerObj.transform.eulerAngles;
+        //// 現在のプレイヤーの角度を取得
+        //Vector3 currentRotation = playerObj.transform.eulerAngles;
 
-        // Y軸の回転だけを設定して回転
-        playerObj.transform.eulerAngles = new Vector3(currentRotation.x, targetRotation, currentRotation.z);
+        //// Y軸の回転だけを設定して回転
+        //playerObj.transform.eulerAngles = new Vector3(currentRotation.x, targetRotation, currentRotation.z);
 
         // ダッシュ時の速度を計算
         float currentSpeed = playerInput.IsDash ? moveSpeed * magnification : moveSpeed;
