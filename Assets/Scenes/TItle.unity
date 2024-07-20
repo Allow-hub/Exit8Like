@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d982699fb85bc8942a1bb12d87cd775d, type: 3}
   moveHair: {fileID: 697955256}
   coolDown: 0.05
-  moveSpeed: -4
+  moveSpeed: 0
   rb: {fileID: 1296776824}
 --- !u!212 &878929344
 SpriteRenderer:
@@ -3707,7 +3707,7 @@ Transform:
   m_GameObject: {fileID: 1563671370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.04, y: 1.41, z: 0}
+  m_LocalPosition: {x: -8.04, y: 0.95, z: 0}
   m_LocalScale: {x: 0.2, y: 0.24, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3947,7 +3947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1681757745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4597,7 +4597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1933121242
 SpriteRenderer:
   m_ObjectHideFlags: 0
