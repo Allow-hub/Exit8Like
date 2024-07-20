@@ -11,7 +11,6 @@ public class AnomalySmoking : AnomalyBase
     [SerializeField] private float disappearTime = 0.5f; // ‰Œ‚ªÁ‚¦‚éŠÔ‚ğ’Ç‰Á
 
     private bool reverseOrder = false;
-    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
