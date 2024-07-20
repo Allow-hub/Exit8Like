@@ -9,6 +9,8 @@ public class AnomalyBase : MonoBehaviour
     public float DistanceFromPlayer { get; set; } //異変を起こすプレイヤーとの距離
     public  SpriteRenderer spriteRenderer;
 
+    public int Number { get; set; }
+    public string Explain { get; set; }
     public  void PlayAnomaly(GameObject obj)
     {
         if (GameManager.Instance == null) return;

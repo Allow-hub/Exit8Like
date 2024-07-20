@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +13,8 @@ public class AnomalyNomal : AnomalyBase
     [SerializeField] private float distanceFromPlayer = 200f;
     [SerializeField] private Sprite changeSprite;
     private Sprite initSprite;
-
+    [SerializeField] private int number;
+    [SerializeField] private string explain;
     private void Start()
     {
         SetProperety();
@@ -31,6 +33,8 @@ public class AnomalyNomal : AnomalyBase
         DistanceFromPlayer = distanceFromPlayer;
         spriteRenderer= gameObject.GetComponent<SpriteRenderer>();
         initSprite=spriteRenderer.sprite;
+        Number = number;
+        Explain = explain;
     }
 
     public override void Animation()
