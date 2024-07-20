@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65513467}
   - component: {fileID: 65513468}
+  - component: {fileID: 65513469}
   m_Layer: 0
   m_Name: poster2
   m_TagString: Untagged
@@ -291,6 +292,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &65513469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65513466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 65513468}
+  isClear: 0
+  distanceFromPlayer: 200
+  changeSprite: {fileID: 21300000, guid: 329627420722123479a227a41d4adb2b, type: 3}
 --- !u!1 &75346103
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +318,6 @@ GameObject:
   m_Component:
   - component: {fileID: 75346104}
   - component: {fileID: 75346105}
-  - component: {fileID: 75346106}
   m_Layer: 0
   m_Name: flyer
   m_TagString: Untagged
@@ -376,22 +392,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &75346106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75346103}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 75346105}
-  isClear: 0
-  distanceFromPlayer: 200
-  changeSprite: {fileID: 21300000, guid: e31acc1d9bd3c7f44bc5279d0f8978fb, type: 3}
 --- !u!1 &84330000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2369,6 @@ GameObject:
   - component: {fileID: 610661801}
   - component: {fileID: 610661802}
   - component: {fileID: 610661803}
-  - component: {fileID: 610661804}
   m_Layer: 0
   m_Name: ticket
   m_TagString: Untagged
@@ -2459,23 +2458,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 610661802}
   isClear: 0
   distanceFromPlayer: 200
-  changeSprite: {fileID: 21300000, guid: 13fe6812b58372f46b216887d8988f1a, type: 3}
---- !u!114 &610661804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610661800}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 610661802}
-  isClear: 0
-  distanceFromPlayer: 200
-  changeSprite: {fileID: 21300000, guid: 948873bb8bfed444c86389822abd6177, type: 3}
+  changeSprite: {fileID: 21300000, guid: 2187bbc50389e954abd5ef2a3dd66135, type: 3}
 --- !u!1 &621274473
 GameObject:
   m_ObjectHideFlags: 0
@@ -5575,7 +5558,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1305974039}
   - component: {fileID: 1305974040}
-  - component: {fileID: 1305974041}
   m_Layer: 0
   m_Name: poster1
   m_TagString: Untagged
@@ -5650,22 +5632,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1305974041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305974038}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb375131800a3434a920e719a0569e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1305974040}
-  isClear: 0
-  distanceFromPlayer: 10
-  changeSprite: {fileID: 21300000, guid: ca0b182c6bfa9634e81a0aa9c2e4055e, type: 3}
 --- !u!1 &1307836827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6415,7 +6381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489462815}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32328b0bed3b209498a3e89fada8dd73, type: 3}
   m_Name: 
