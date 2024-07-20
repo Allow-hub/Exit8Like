@@ -16,7 +16,8 @@ public class AnomalyHair : AnomalyBase
     private void Start()
     {
         SetProperety();
-
+        StartCoroutine(ChangeSprite());
+        Move();
     }
     public override void Animation()
     {
