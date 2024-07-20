@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AnomalySmoking : AnomalyBase
@@ -24,8 +25,7 @@ public class AnomalySmoking : AnomalyBase
     {
         base.Animation();
 
-        //StartCoroutine(ChangeSprite());
-
+        StartCoroutine(ChangeSprite());
     }
 
     private void SetProperety()
@@ -34,10 +34,28 @@ public class AnomalySmoking : AnomalyBase
         DistanceFromPlayer = distanceFromPlayer;
     }
 
-    /*private IEnumerator ChangeSprite()
+    
+
+    private IEnumerator ChangeSprite()
     {
-
-    }*/
-
-
+        while (true)
+        {
+            if (!reverseOrder)
+            {
+                for (int i = 0; i < smoke.Length; i++)
+                {
+                    spriteRenderer.sprite = smoke[i];
+                    yield return new WaitForSeconds(coolDown);
+                }
+            }
+            else
+            {
+                for (int i = smoke.Length - 1; i >= 0; i--)
+                {
+                    spriteRenderer.sprite = smoke[i];
+                    yield return new WaitForSeconds(coolDown);
+                }
+            }
+        }
+    }
 }
