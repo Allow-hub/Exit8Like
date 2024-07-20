@@ -96,6 +96,7 @@ public class CheckAnomalies : MonoBehaviour
        // 必要に応じて、選ばれた異常の情報をログ出力する
         Debug.Log("選択された異常: " + anomalyObjects[selectedIndex].name);
         anomalyBaseCheck = anomalyObjects[selectedIndex];
+        anomalyBaseCheck.IsAnomaly = true;
         anomalyBaseCheck.PlayAnomaly(anomalyBaseCheck.gameObject);
         currentProb = initProb;
         if (GameManager.Instance == null) return;
@@ -108,6 +109,7 @@ public class CheckAnomalies : MonoBehaviour
         if (GameManager.Instance == null) return;
         Rigidbody rb =GameManager.Instance.player.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
+
         //異変があるときに
         if (GameManager.Instance.isExsitAnomaly)
         {
@@ -151,5 +153,7 @@ public class CheckAnomalies : MonoBehaviour
                 GameManager.Instance.CurrentNum++;
             }
         }
+        if(anomalyBaseCheck!=null) 
+        anomalyBaseCheck.IsAnomaly = false;
     }
 }

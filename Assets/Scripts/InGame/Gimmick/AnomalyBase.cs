@@ -12,8 +12,8 @@ public class AnomalyBase : MonoBehaviour
     public  void PlayAnomaly(GameObject obj)
     {
         if (GameManager.Instance == null) return;
-        if (!IsAnomaly) return;
-       float distance = Vector3.Distance(obj.transform.position, GameManager.Instance.player.transform.position);
+        //if (!IsAnomaly) return;
+        float distance = Vector3.Distance(obj.transform.position, GameManager.Instance.player.transform.position);
        
         if (distance <= DistanceFromPlayer)
         {
