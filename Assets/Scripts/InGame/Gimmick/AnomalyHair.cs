@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class AnomalyHair : AnomalyBase
 {
@@ -14,7 +15,9 @@ public class AnomalyHair : AnomalyBase
     [SerializeField] private Rigidbody rb;
     [SerializeField] private int number;
     [SerializeField] private string explain;
-    private bool reverseOrder = false;
+    private bool reverseOrder = false; 
+    private bool hasCheckedDistance = false;
+
     private void Start()
     {
         moveHair.gameObject.SetActive(false);
@@ -24,7 +27,6 @@ public class AnomalyHair : AnomalyBase
     }
     public override void Animation()
     {
-        base.Animation();
         moveHair.gameObject.SetActive(true);
         StartCoroutine(ChangeSprite());
         Move();
@@ -40,13 +42,38 @@ public class AnomalyHair : AnomalyBase
 
     private void Move()
     {
-        rb.velocity = new Vector3(moveSpeed, 0, 0);
+
+        //rb.velocity = new Vector3(moveSpeed, 0, 0);
+    }
+    public override void ReverseAnomaly()
+    {
+        base .ReverseAnomaly();
+        rb.velocity = Vector3.zero;
+        moveHair.gameObject.SetActive (false);
     }
 
     private IEnumerator ChangeSprite()
     {
-        while (true)
+
+        while (IsAnomaly)
         {
+            if (!hasCheckedDistance)
+            {
+                float distance = Vector3.Distance(this.transform.position, GameManager.Instance.player.transform.position);
+
+                if (distance < 15)
+                {
+                    hasCheckedDistance = true;
+                }
+                else
+                {
+                    yield return null;
+                    continue;
+                }
+            }
+
+            rb.velocity = new Vector3(moveSpeed, 0, 0);
+
             if (!reverseOrder)
             {
                 for (int i = 0; i < normalHair.Length; i++)

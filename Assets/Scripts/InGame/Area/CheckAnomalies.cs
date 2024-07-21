@@ -74,7 +74,7 @@ public class CheckAnomalies : MonoBehaviour
         // 異常が IsClear が false の場合にそのインデックスをリストに追加する
         for (int i = 0; i < anomalyObjects.Count; i++)
         {
-            Debug.Log(anomalyObjects[i].IsClear);
+            //Debug.Log(anomalyObjects[i].IsClear);
             if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
             {
                 notClearIndices.Add(i);

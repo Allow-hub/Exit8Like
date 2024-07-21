@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 65513468}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 21ee6f366e665b04298def96ed6b8c90, type: 3}
   number: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 139613117}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 7c98ad3cdb8cbfb40b470eabe677a58e, type: 3}
   number: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 139613117}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: e68d31dad8fc47448a91ae58b5386e90, type: 3}
   number: 0
@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 419754402}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 1d2d6c48a945d2346b2f33b685e27132, type: 3}
   number: 0
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 477822983}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 252fc11979b7d6e42a6050a190165bef, type: 3}
   number: 5
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 601987602}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: ee885f1d431263e4aa86b585e28a1b51, type: 3}
   number: 0
@@ -2745,7 +2745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 610661802}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 2187bbc50389e954abd5ef2a3dd66135, type: 3}
   number: 0
@@ -3546,7 +3546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 688686165}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 0}
   number: 0
@@ -3564,7 +3564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
-  isClear: 0
+  isClear: 1
   player: {fileID: 1031619087}
   right: {fileID: 21300000, guid: 71d6beed46357f04a9fca32316254941, type: 3}
   left: {fileID: 21300000, guid: 3765bf501fdcefb42818d478d236915b, type: 3}
@@ -3907,7 +3907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 789265920}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: a83cdaca84a379849828a49f35968bef, type: 3}
   number: 0
@@ -3959,7 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2073433135}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 300
   number: 10
   explain: 
@@ -4561,7 +4561,7 @@ MonoBehaviour:
   anomalyParent: {fileID: 853172379}
   notAnomalyObject: {fileID: 1645559355}
   notAnomalyArea: {fileID: 527143898}
-  initProb: 20
+  initProb: 60
   addPosition: 120
 --- !u!114 &942581481
 MonoBehaviour:
@@ -5264,7 +5264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 980330564}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: d2ae73ff9e9b7874aad8bf91a1746165, type: 3}
   number: 0
@@ -5295,7 +5295,7 @@ Transform:
   m_GameObject: {fileID: 1009430393}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 60, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5664,7 +5664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1055859510}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 6201962c713a02c4885db08ac7d75d50, type: 3}
   number: 0
@@ -7433,7 +7433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
-  isClear: 0
+  isClear: 1
   poster: {fileID: 84330000}
   anomalyPoster: {fileID: 1574060214}
   blackEye: {fileID: 65465770}
@@ -7543,8 +7543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1463988559}
-  isClear: 0
-  distanceFromPlayer: 2
+  isClear: 1
+  distanceFromPlayer: 2000
   normalHair:
   - {fileID: 21300000, guid: 86ae453204d14544ebbf57ebdcf12f13, type: 3}
   - {fileID: 21300000, guid: 757cea1e9c1de834a86cfadec39b7e33, type: 3}
@@ -8514,7 +8514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1687379006}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: dbf2e9b8cd8f73741a274eaa0324eedb, type: 3}
   number: 0
@@ -8618,7 +8618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1742505779}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: d59f8328f1542a3408dbd2f4e14f23c4, type: 3}
   number: 0
@@ -8636,7 +8636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1742505779}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: eecacee8e309fa444beb6b8712d88528, type: 3}
   number: 0
@@ -9541,7 +9541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1975666399}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: af9f9476cbd9a4d44a573a69ceba0f0f, type: 3}
   number: 0
