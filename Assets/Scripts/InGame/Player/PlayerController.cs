@@ -49,5 +49,7 @@ public class PlayerController : MonoBehaviour
         // ˆÊ’u‚ðŒvŽZ‚µ‚ÄˆÚ“®
         Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
+
+
     }
 }
