@@ -29,11 +29,11 @@ public class AnomalyPoster3 : AnomalyBase
         whiteEye.SetActive(false);
         SetProperty();
         // Debug
-        poster.SetActive(false);
-        anomalyPoster.SetActive(true);
-        blackEye.SetActive(true);
-        whiteEye.SetActive(true);
-        StartCoroutine(MoveEye());
+        //poster.SetActive(false);
+        //anomalyPoster.SetActive(true);
+        //blackEye.SetActive(true);
+        //whiteEye.SetActive(true);
+        //StartCoroutine(MoveEye());
     }
 
     void Update()
@@ -56,6 +56,7 @@ public class AnomalyPoster3 : AnomalyBase
 
     public override void Animation()
     {
+        Debug.Log(gameObject.name);
         poster.SetActive(false);
         anomalyPoster.SetActive(true);
         blackEye.SetActive(true);
@@ -75,7 +76,7 @@ public class AnomalyPoster3 : AnomalyBase
     private IEnumerator MoveEye()
     {
         // 異変抽選側で親のIsAnomalyをtrueにしてる
-        while (true )
+        while (IsAnomaly)
         {
             // 親の距離を測るコードは不都合があったのでここで確認
             if (!hasCheckedDistance)
