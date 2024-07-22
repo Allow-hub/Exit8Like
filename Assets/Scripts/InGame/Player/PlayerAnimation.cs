@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -31,14 +32,20 @@ public class PlayerAnimation : MonoBehaviour
         while (true)
         {
             if (!reverseOrder)
-            for (int i = 0; i < PlayerLeft.Length; i++)
             {
-                spriteRenderer.sprite = PlayerLeft[i];
-                yield return new WaitForSeconds(Cooldown);
+                for (int i = 0; i < PlayerLeft.Length; i++)
+                {
+                    spriteRenderer.sprite = PlayerLeft[i];
+                    yield return new WaitForSeconds(Cooldown);
+                }
             }
             else
             {
-                for (int i = 0;i < PlayerRight.Length -1; i--) { }
+                for (int i = PlayerLeft.Length - 1; i >= 0; i--)
+                {
+                    spriteRenderer.sprite = PlayerLeft[i];
+                    yield return new WaitForSeconds(Cooldown);
+                }
             }
         }
     }
@@ -47,10 +54,22 @@ public class PlayerAnimation : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < PlayerRight.Length; i++)
+            if (!reverseOrder)
             {
-                spriteRenderer.sprite = PlayerRight[i];
-                yield return new WaitForSeconds(Cooldown);
+                for (int i = 0; i < PlayerRight.Length; i++)
+                {
+                    spriteRenderer.sprite = PlayerRight[i];
+                    yield return new WaitForSeconds(Cooldown);
+                }
+            }
+            else
+            {
+                for (int i = PlayerRight.Length; i >= 0; i--)
+                {
+                    spriteRenderer.sprite = PlayerRight[i];
+                    yield return new WaitForSeconds(Cooldown);
+                }
+
             }
         }
     }
