@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         // ダッシュ時の速度を計算
         float currentSpeed = playerInput.IsDash ? moveSpeed * magnification : moveSpeed;
+
         // 位置を計算して移動
         Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);

@@ -5565,7 +5565,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7782a1a716430644ba45ac83192e6a79, type: 3}
   - {fileID: 21300000, guid: 55d90d4a3d5cd7a41aa995f32fbf5992, type: 3}
   - {fileID: 21300000, guid: 548b17d4202c59543ab73c645097cba1, type: 3}
-  Cooldown: 0
+  Cooldown: 0.1
 --- !u!1 &1055859508
 GameObject:
   m_ObjectHideFlags: 0
