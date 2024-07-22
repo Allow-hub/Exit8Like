@@ -34,10 +34,14 @@ public class AnomalyClerk : AnomalyBase
     }
     IEnumerator ChangeSprite()
     {
-        while (true)
+        while (IsAnomaly)
         {
-            //count++;
-            //if (count >= 100000) yield break;
+            count++;
+            if (count >= 100000)
+            {
+                Debug.Log("èàóùé∏îs");
+                yield break;
+            }
             playerPos = player.transform.position;
             Vector3 anomalyPos = transform.position;
             Vector3 localAnomalyPos = transform.InverseTransformPoint(playerPos);
@@ -58,6 +62,7 @@ public class AnomalyClerk : AnomalyBase
     }
     public override void ReverseAnomaly()
     {
+        base.ReverseAnomaly();
         spriteRenderer.sprite = initSprite;
     }
 }

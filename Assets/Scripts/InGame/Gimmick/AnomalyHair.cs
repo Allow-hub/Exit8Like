@@ -23,13 +23,11 @@ public class AnomalyHair : AnomalyBase
         moveHair.gameObject.SetActive(false);
         SetProperety();
         //StartCoroutine(ChangeSprite());
-        //Move();
     }
     public override void Animation()
     {
         moveHair.gameObject.SetActive(true);
         StartCoroutine(ChangeSprite());
-        Move();
     }
 
     private void SetProperety()
@@ -40,11 +38,7 @@ public class AnomalyHair : AnomalyBase
         Explain = explain;
     }
 
-    private void Move()
-    {
 
-        //rb.velocity = new Vector3(moveSpeed, 0, 0);
-    }
     public override void ReverseAnomaly()
     {
         base .ReverseAnomaly();

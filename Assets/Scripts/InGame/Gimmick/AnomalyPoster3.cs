@@ -8,61 +8,97 @@ using UnityEngine.UIElements;
 public class AnomalyPoster3 : AnomalyBase
 {
     [SerializeField] private bool isClear = false;
+    [SerializeField] private float distanceFromPlayer = 200f;
+    [SerializeField] private int number;
+    [SerializeField] private string explain;
     [SerializeField] private GameObject poster;
     [SerializeField] private GameObject anomalyPoster;
-    [SerializeField] private GameObject blackEye;
+    [SerializeField] private GameObject blackEye; // 動かす黒目
     [SerializeField] private GameObject whiteEye;
-    [SerializeField] private GameObject RightEyeParts1;
-    [SerializeField] private GameObject RightEyeParts2;
-    [SerializeField] private GameObject LeftEyeParts1;
-    [SerializeField] private GameObject LeftEyeParts2;
+    [SerializeField] private GameObject eyeLimitLeft; // 目の制限左
+    [SerializeField] private GameObject eyeLimitRight; // 目の制限右
     [SerializeField] private GameObject player;
 
-    Vector3 RightEyePos1;
-    Vector3 RightEyePos2;
-    Vector3 LeftEyePos1;
-    Vector3 LeftEyePos2;
-
-
-    public float moveSpeed = 1.0f; // 黒目の動くスピード
-
-    // Start is called before the first frame update
+    [SerializeField] private float moveSpeed = 1.0f; // 黒目の動くスピード
+    private bool hasCheckedDistance = false;
     void Start()
     {
-        // 画像の表示/非表示
+        poster.SetActive(true);
+        anomalyPoster.SetActive(false);
+        blackEye.SetActive(false);
+        whiteEye.SetActive(false);
+        SetProperty();
+        // Debug
         poster.SetActive(false);
         anomalyPoster.SetActive(true);
         blackEye.SetActive(true);
         whiteEye.SetActive(true);
-
-        // 範囲指定のObjectのTrnsform
-        RightEyePos1 = RightEyeParts1.transform.position;
-        RightEyePos2 = RightEyeParts2.transform.position;
-        LeftEyePos1 = LeftEyeParts1.transform.position;
-        LeftEyePos2 = LeftEyeParts2.transform.position;
-
+        StartCoroutine(MoveEye());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Move();
-
-        //黒目の位置を範囲内に制限
+        // 黒目の位置を範囲内に制限
         blackEye.transform.position = new Vector3(
-            Mathf.Clamp (blackEye.transform.position.x, RightEyePos1.x, RightEyePos2.x),
-            Mathf.Clamp (blackEye.transform.position.x,LeftEyePos1.x, LeftEyePos2.x),
-            blackEye.transform.position.y
-            );
-
+            Mathf.Clamp(blackEye.transform.position.x, eyeLimitLeft.transform.position.x, eyeLimitRight.transform.position.x),
+            blackEye.transform.position.y,
+            blackEye.transform.position.z
+        );
     }
 
-    private void Move()
+    private void SetProperty()
     {
-        if(GameManager.Instance==null) return;
-        float distance = Vector3.Distance(anomalyPoster.gameObject.transform.position, GameManager.Instance.player.transform.position);
-        Debug.Log (distance);
+        IsClear = isClear;
+        DistanceFromPlayer = distanceFromPlayer;
+        Number = number;
+        Explain = explain;
+    }
 
+    public override void Animation()
+    {
+        poster.SetActive(false);
+        anomalyPoster.SetActive(true);
+        blackEye.SetActive(true);
+        whiteEye.SetActive(true);
+        StartCoroutine(MoveEye());
+    }
 
+    public override void ReverseAnomaly()
+    {
+        base.ReverseAnomaly();
+        poster.SetActive(true);
+        anomalyPoster.SetActive(false);
+        blackEye.SetActive(false);
+        whiteEye.SetActive(false);
+    }
+
+    private IEnumerator MoveEye()
+    {
+        // 異変抽選側で親のIsAnomalyをtrueにしてる
+        while (true )
+        {
+            // 親の距離を測るコードは不都合があったのでここで確認
+            if (!hasCheckedDistance)
+            {
+                float distance = Vector3.Distance(this.transform.position, player.transform.position);
+
+                if (distance < distanceFromPlayer)
+                {
+                    hasCheckedDistance = true;
+                }
+                else
+                {
+                    yield return null;
+                    continue; // 条件が通るまでここから先の処理はスキップ
+                }
+            }
+            Vector3 playerPos = player.transform.position;
+            Vector3 direction = (playerPos - blackEye.transform.position).normalized; // プレイヤーの方向を計算
+            direction.y = 0; // Y軸方向の移動を無効にする
+            direction.z = 0; // Z軸方向の移動を無効にする
+            blackEye.transform.position += direction * moveSpeed * Time.deltaTime; // 徐々にプレイヤーの方向に動かす
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
