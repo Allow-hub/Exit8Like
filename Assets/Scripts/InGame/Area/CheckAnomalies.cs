@@ -61,13 +61,14 @@ public class CheckAnomalies : MonoBehaviour
         if (GameManager.Instance == null) return;
         GameManager.Instance.isExsitAnomaly = false;
         notAnomalyArea.gameObject.SetActive(true);
+        anomalyParent.gameObject.SetActive(false);
         currentProb += addProb;
     }
 
     private void Anomaly()
     {
         notAnomalyArea.gameObject.SetActive(false);
-
+        anomalyParent.gameObject.SetActive(true) ;
         // 異常が非アクティブなインデックスを保持するリストを作成する
         List<int> notClearIndices = new List<int>();
 
@@ -125,7 +126,7 @@ public class CheckAnomalies : MonoBehaviour
                 {
                     anomalyBaseCheck.IsClear = true;
                     anomalyBaseCheck.ReverseAnomaly();
-
+                    currentProb -= addProb;
                 }
             }
             else
@@ -153,7 +154,5 @@ public class CheckAnomalies : MonoBehaviour
                 GameManager.Instance.CurrentNum++;
             }
         }
-        if(anomalyBaseCheck!=null) 
-        anomalyBaseCheck.IsAnomaly = false;
     }
 }
