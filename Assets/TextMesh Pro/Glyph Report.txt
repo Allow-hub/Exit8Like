@@ -1,0 +1,12 @@
+Font: BestTenDOT  Style: Regular
+Point Size: 200   SP/PD Ratio: 2.5%
+
+Characters included: 130/130
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------
