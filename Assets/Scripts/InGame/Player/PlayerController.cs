@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -16,10 +17,14 @@ public class PlayerController : MonoBehaviour
     private GameObject playerObj;
     Rigidbody rb;
 
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerObj = this.gameObject.transform.GetChild(0).gameObject;
+
+        playerX = 
     }
 
     // Update is called once per frame
@@ -50,6 +55,6 @@ public class PlayerController : MonoBehaviour
         Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
 
-
+        if (xInput = )
     }
 }
