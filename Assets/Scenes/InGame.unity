@@ -3588,7 +3588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 804351529}
-  isClear: 0
+  isClear: 1
   distanceFromPlayer: 200
   changeSprite: {fileID: 21300000, guid: 88801b8660d9bb74693d5059ba4d4387, type: 3}
   number: 0
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   anomalyParent: {fileID: 853172379}
   notAnomalyObject: {fileID: 1645559355}
   notAnomalyArea: {fileID: 527143898}
-  initProb: 60
+  initProb: 100
   addPosition: 120
 --- !u!114 &942581481
 MonoBehaviour:
@@ -4731,6 +4731,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1009430394}
   - component: {fileID: 1009430395}
+  - component: {fileID: 1009430397}
+  - component: {fileID: 1009430396}
   m_Layer: 0
   m_Name: EffectAnomaly
   m_TagString: Untagged
@@ -4772,6 +4774,47 @@ MonoBehaviour:
   rec: {fileID: 892406347}
   vol: {fileID: 1160234426}
   number: 12
+  explain: 
+--- !u!114 &1009430396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009430393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfa575f35931e844a1fca6351b05c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  isClear: 1
+  player: {fileID: 1031619087}
+  vol: {fileID: 1160234426}
+  distanceFromPlayer: 200
+  anomalyDistance: 22
+  number: 0
+  explain: 
+--- !u!114 &1009430397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009430393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0addaa023a531648be4e03afbbb12f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  isClear: 0
+  player: {fileID: 1031619087}
+  vol: {fileID: 1160234426}
+  targetColor: {r: 0.16299999, g: 0.16299999, b: 0.16299999, a: 1}
+  distanceFromPlayer: 200
+  anomalyDistance: 22
+  number: 0
   explain: 
 --- !u!1 &1009681206
 GameObject:
@@ -9491,7 +9534,7 @@ PrefabInstance:
     - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}
       propertyPath: isClear
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}

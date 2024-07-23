@@ -580,6 +580,7 @@ MonoBehaviour:
   se: {fileID: 183527618}
   clear: {fileID: 8300000, guid: c7a8407b5d9bf2c41ae3aceca17199b5, type: 3}
   buttonClip: {fileID: 8300000, guid: c7a8407b5d9bf2c41ae3aceca17199b5, type: 3}
+  monotoneClip: {fileID: 8300000, guid: 68b85f2853dd94b418501629288a7b90, type: 3}
 --- !u!4 &183527620
 Transform:
   m_ObjectHideFlags: 0

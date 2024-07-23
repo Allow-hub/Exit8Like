@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerObj = this.gameObject.transform.GetChild(0).gameObject;
 
-        playerX = 
+        //playerX = 
     }
 
     // Update is called once per frame
@@ -55,6 +55,6 @@ public class PlayerController : MonoBehaviour
         Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
 
-        if (xInput = )
+        //if (xInput = )
     }
 }

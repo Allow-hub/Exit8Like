@@ -6,7 +6,7 @@ public class SEManager : Singleton<SEManager>
 {
     public static SEManager Instance => I;
     public AudioSource se;
-    [SerializeField] AudioClip clear,buttonClip;
+    [SerializeField] AudioClip clear,buttonClip,monotoneClip;
     protected override void Init()
     {
         base.Init();
@@ -22,6 +22,12 @@ public class SEManager : Singleton<SEManager>
     {
         se.Stop();
         se.PlayOneShot(buttonClip);
+    }
+
+    public void MonotoneSe()
+    {
+        se.Stop();
+        se.PlayOneShot(monotoneClip);
     }
 
 }
