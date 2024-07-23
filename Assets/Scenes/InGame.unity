@@ -13587,13 +13587,18 @@ PrefabInstance:
     - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}
       propertyPath: number
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1031619087}
+    - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
+        type: 3}
+      propertyPath: explain
+      value: "\u63A2\u5075\u306E\u30B7\u30E3\u30ED\u3061\u3083\u3093\u304C\u3053\u3063\u3061\u3092\u305A\u3063\u3068\u898B\u3066\u3044\u308B\u6C17\u304C\u3059\u308B"
+      objectReference: {fileID: 0}
     - target: {fileID: 4556603865243640976, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}
       propertyPath: isClear
