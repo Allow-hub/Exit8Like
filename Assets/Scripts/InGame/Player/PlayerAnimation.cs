@@ -1,79 +1,98 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-
     [SerializeField] private Sprite[] PlayerLeft;
     [SerializeField] private Sprite[] PlayerRight;
-    [SerializeField] private float Cooldown = 0.5f;
+    [SerializeField] private float baseCooldown = 0.5f; // 基本のクールダウン時間
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    public bool isAnimating = false; // アニメーション制御のためのフラグ
+
     private bool reverseOrder = false;
-        
+    private Coroutine currentCoroutine = null; // 現在のコルーチンを保存
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
     }
 
-    private void Animation()
+    public void StartRightAnimation(float speedMultiplier)
     {
-        StartCoroutine(RightChangeSprite());
-        StartCoroutine(LeftChangeSprite());
+        StopCurrentAnimation();
+        isAnimating = true;
+        float cooldown = baseCooldown / speedMultiplier; // ダッシュ時のクールダウン時間を計算
+        currentCoroutine = StartCoroutine(RightChangeSprite(cooldown));
     }
-   
-    private IEnumerator RightChangeSprite()
+
+    public void StartLeftAnimation(float speedMultiplier)
     {
-        while (true)
+        StopCurrentAnimation();
+        isAnimating = true;
+        float cooldown = baseCooldown / speedMultiplier; // ダッシュ時のクールダウン時間を計算
+        currentCoroutine = StartCoroutine(LeftChangeSprite(cooldown));
+    }
+
+    public void StopAnimation()
+    {
+        StopCurrentAnimation();
+        isAnimating = false;
+    }
+
+    private void StopCurrentAnimation()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
+    }
+
+    private IEnumerator LeftChangeSprite(float cooldown)
+    {
+        while (isAnimating)
         {
             if (!reverseOrder)
             {
                 for (int i = 0; i < PlayerLeft.Length; i++)
                 {
                     spriteRenderer.sprite = PlayerLeft[i];
-                    yield return new WaitForSeconds(Cooldown);
+                    yield return new WaitForSeconds(cooldown); // クールダウン時間を調整
                 }
             }
             else
             {
-                for (int i = PlayerLeft.Length - 1; i >= 0; i--)
+                for (int i = PlayerLeft.Length - 2; i > 0; i--)
                 {
                     spriteRenderer.sprite = PlayerLeft[i];
-                    yield return new WaitForSeconds(Cooldown);
+                    yield return new WaitForSeconds(cooldown); // クールダウン時間を調整
                 }
             }
+            reverseOrder = !reverseOrder;
         }
     }
 
-    private IEnumerator LeftChangeSprite()
+    private IEnumerator RightChangeSprite(float cooldown)
     {
-        while (true)
+        while (isAnimating)
         {
             if (!reverseOrder)
             {
                 for (int i = 0; i < PlayerRight.Length; i++)
                 {
                     spriteRenderer.sprite = PlayerRight[i];
-                    yield return new WaitForSeconds(Cooldown);
+                    yield return new WaitForSeconds(cooldown); // クールダウン時間を調整
                 }
             }
             else
             {
-                for (int i = PlayerRight.Length; i >= 0; i--)
+                for (int i = PlayerRight.Length - 2; i > 0; i--)
                 {
                     spriteRenderer.sprite = PlayerRight[i];
-                    yield return new WaitForSeconds(Cooldown);
+                    yield return new WaitForSeconds(cooldown); // クールダウン時間を調整
                 }
-
             }
+            reverseOrder = !reverseOrder;
         }
     }
-
-
 }
-
