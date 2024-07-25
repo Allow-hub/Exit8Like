@@ -7,6 +7,9 @@ public class AnomalyChasePlayer : AnomalyBase
     [SerializeField] private bool isClear = false;
     [SerializeField] private float distanceFromPlayer = 2f;
     [SerializeField] private GameObject player, anomaly;
+    [SerializeField] private float shiftX, shiftY, shiftZ;
+    [SerializeField] private float followSpeed = 5f; // 追従の速さ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +19,6 @@ public class AnomalyChasePlayer : AnomalyBase
     // Update is called once per frame
     void Update()
     {
-        Move();   
     }
 
     private void SetProperety()
@@ -24,14 +26,27 @@ public class AnomalyChasePlayer : AnomalyBase
         IsClear = isClear;
         DistanceFromPlayer = distanceFromPlayer;
     }
+
     public override void Animation()
     {
         base.Animation();
-        Move();
-    }
-    private void Move()
-    {
-        anomaly.transform.position=new Vector3(player.transform.position.x-1f,player.transform.position.y+0.5f,player.transform.position.z-0.5f);
+        anomaly.gameObject.SetActive(true);
+        StartCoroutine(Move());
     }
 
+    public override void ReverseAnomaly()
+    {
+        base.ReverseAnomaly();
+        anomaly.gameObject.SetActive(false);
+    }
+
+    private IEnumerator Move()
+    {
+        while (IsAnomaly)
+        {
+            Vector3 targetPosition = new Vector3(player.transform.position.x + shiftX, player.transform.position.y + shiftY, player.transform.position.z + shiftZ);
+            anomaly.transform.position = Vector3.Lerp(anomaly.transform.position, targetPosition, followSpeed * Time.deltaTime);
+            yield return null; // フレームごとに更新
+        }
+    }
 }
