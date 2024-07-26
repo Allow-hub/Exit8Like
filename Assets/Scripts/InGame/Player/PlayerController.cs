@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private void Animation()
     {
         Vector3 moveDirection = playerInput.InputVector.normalized;
-        float speedMultiplier = playerInput.IsDash ? moveSpeed * magnification / moveSpeed : 1f; // ダッシュ時のスピード倍率に基づくアニメーション速度倍率
+        float speedMultiplier = playerInput.IsDash ? magnification : 1f; // ダッシュ時のスピード倍率に基づくアニメーション速度倍率
 
         if (moveDirection.x > 0)
         {
@@ -71,5 +71,7 @@ public class PlayerController : MonoBehaviour
                 playerAnimation.StopAnimation();
             }
         }
+
+        playerAnimation.UpdateAnimationSpeed(speedMultiplier);
     }
 }
