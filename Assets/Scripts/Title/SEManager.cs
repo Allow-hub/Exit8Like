@@ -6,12 +6,17 @@ public class SEManager : Singleton<SEManager>
 {
     public static SEManager Instance => I;
     public AudioSource se;
-    [SerializeField] AudioClip clear,buttonClip,monotoneClip;
+    [SerializeField] AudioClip clear,buttonClip,monotoneClip,screamClip;
     protected override void Init()
     {
         base.Init();
         DontDestroyOnLoad(gameObject);
         se = GetComponent<AudioSource>();
+    }
+
+    public void StopSe()
+    {
+        se.Stop();
     }
 
     public void SetSEVolume(float volume)
@@ -30,4 +35,9 @@ public class SEManager : Singleton<SEManager>
         se.PlayOneShot(monotoneClip);
     }
 
+    public void ScreamSe()
+    {
+        se.Stop();
+        se.PlayOneShot(screamClip);
+    }
 }

@@ -31,7 +31,12 @@ public class AnomalySmoking : AnomalyBase
         anomaly.gameObject.SetActive(true);
         StartCoroutine(ChangeSprite());
     }
-
+    public override void ReverseAnomaly()
+    {
+        base.ReverseAnomaly();
+        anomaly.gameObject.SetActive(false);
+        normal.gameObject.SetActive(true);
+    }
     private void SetProperety()
     {
         IsClear = isClear;
@@ -42,7 +47,7 @@ public class AnomalySmoking : AnomalyBase
 
     private IEnumerator ChangeSprite()
     {
-        while (true)
+        while (IsAnomaly)
         {
 
             for (int i = 0; i < smoke.Length; i++)

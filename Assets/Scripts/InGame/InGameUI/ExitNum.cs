@@ -20,7 +20,7 @@ public class ExitNum : MonoBehaviour
     void Update()
     { 
         if (GameManager.Instance == null) return;    
-        if(lastNum != GameManager.Instance.CurrentNum&&!textAnomaly.IsAnomaly)
+        if(lastNum != GameManager.Instance.CurrentNum)
         {
             lastNum = GameManager.Instance.CurrentNum;
             tex.text = lastNum.ToString();

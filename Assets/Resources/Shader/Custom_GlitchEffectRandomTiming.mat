@@ -30,11 +30,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlockSize: 36.2
-    - _ColorIntensity: 0.472
+    - _ColorIntensity: 0.2
     - _FrameRate: 11.5
     - _Frequency: 0.076
     - _GlitchAmount: 0.169
-    - _GlitchDuration: 0.2
+    - _GlitchDuration: 0.1
     - _GlitchFrequency: 0.43
     m_Colors: []
   m_BuildTextureStacks: []
