@@ -9,23 +9,39 @@ public class AnomalyRandomposter : AnomalyBase
     [SerializeField] private int number;
     [SerializeField] private string explain;
 
-    [SerializeField] private GameObject poster1;
-    [SerializeField] private GameObject poster2;
-    [SerializeField] private GameObject poster3;
-    [SerializeField] private GameObject poster4;
-    [SerializeField] private GameObject poster5;
-
-
+    [SerializeField] private GameObject[] posters;
+    [SerializeField] private Sprite[] images;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetProperety();
+
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void randomPoster()
     {
-        
+        Sprite randomImage = images[Random.Range(0, images.Length)];
+
+        foreach (GameObject poster in posters)
+        {
+            poster.GetComponent<SpriteRenderer>().sprite = randomImage;
+        }
     }
+
+
+    private void SetProperety()
+    {
+        IsClear = isClear;
+        DistanceFromPlayer = distanceFromPlayer;
+        Number = number;
+        Explain = explain;
+    }
+
+    public override void ReverseAnomaly()
+    {
+    }
+
+
 }
