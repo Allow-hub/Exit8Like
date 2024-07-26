@@ -11,27 +11,30 @@ public class ExitTextAnomaly : AnomalyBase
     [SerializeField] private float distanceFromPlayer = 200f;
     [SerializeField] private int number;
     [SerializeField] private string explain;
+    private int originalText;
+
     private void Start()
     {
         SetProperety();
+        originalText = GameManager.Instance.CurrentNum;
     }
+
     public override void Animation()
     {
         base.Animation();
         tex.text = anomalyText;
     }
+
     public override void ReverseAnomaly()
     {
         base.ReverseAnomaly();
-        tex.text = GameManager.Instance.CurrentNum.ToString();
+        tex.text = originalText.ToString();
     }
-
 
     private void SetProperety()
     {
         IsClear = isClear;
         DistanceFromPlayer = distanceFromPlayer;
-        //spriteRenderer = GetComponent<SpriteRenderer>();
         Number = number;
         Explain = explain;
     }

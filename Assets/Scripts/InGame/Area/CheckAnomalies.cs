@@ -7,6 +7,11 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private GameObject anomalyParent;
     [SerializeField] private GameObject notAnomalyObject;
     [SerializeField] private GameObject notAnomalyArea;
+    [SerializeField] private GameObject clearArea;
+    [SerializeField] private Transform clearPos; 
+    [SerializeField] private Transform clearCameraPos;
+
+    [SerializeField] private GameObject cameraPos;
     [SerializeField] private float initProb = 100;
     [SerializeField] private float addPosition = 119;
     private float currentProb;//ˆÙ•Ï‚ª‘I‚Î‚ê‚È‚©‚Á‚½‚Æ‚«‰ÁŽZ‚·‚é‚½‚ß
@@ -36,6 +41,8 @@ public class CheckAnomalies : MonoBehaviour
     }
     private void Start()
     {
+        clearArea.gameObject.SetActive(false);
+
         Lottery(true);
     }
 
@@ -147,11 +154,21 @@ public class CheckAnomalies : MonoBehaviour
             }
             else
             {
-                notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
-
-                anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
-  
                 GameManager.Instance.CurrentNum++;
+
+                if (GameManager.Instance.CurrentNum != 8)
+                {
+                    notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
+
+                    anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
+
+                }
+                if (GameManager.Instance.CurrentNum == 9)
+                {
+                    clearArea.gameObject.SetActive(true);
+                    GameManager.Instance.player.transform.position = clearPos.position;
+                    cameraPos.gameObject.transform.position=clearCameraPos.position;
+                }
             }
         }
     }

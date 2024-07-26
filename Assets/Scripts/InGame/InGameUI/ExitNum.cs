@@ -7,20 +7,38 @@ public class ExitNum : MonoBehaviour
 {
     private int lastNum;
     [SerializeField] private TextMeshProUGUI tex;
-    [SerializeField] ExitTextAnomaly textAnomaly;
-    // Start is called before the first frame update
+    [SerializeField] private ExitTextAnomaly textAnomaly;
+
     void Start()
     {
-        if (GameManager.Instance == null) return;    
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null.");
+            return;
+        }
+
+        if (tex == null)
+        {
+            Debug.LogError("TextMeshProUGUI is not assigned.");
+            return;
+        }
+
+        if (textAnomaly == null)
+        {
+            Debug.LogError("ExitTextAnomaly is not assigned.");
+            return;
+        }
+
         lastNum = GameManager.Instance.CurrentNum;
         tex.text = lastNum.ToString();
     }
 
-    // Update is called once per frame
     void Update()
-    { 
-        if (GameManager.Instance == null) return;    
-        if(lastNum != GameManager.Instance.CurrentNum)
+    {
+        if (GameManager.Instance == null || tex == null || textAnomaly == null)
+            return;
+
+        if (lastNum != GameManager.Instance.CurrentNum && !textAnomaly.IsAnomaly)
         {
             lastNum = GameManager.Instance.CurrentNum;
             tex.text = lastNum.ToString();
