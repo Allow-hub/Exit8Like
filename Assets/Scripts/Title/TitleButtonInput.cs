@@ -18,6 +18,11 @@ public class TitleButtonInput : MonoBehaviour
         exitButton.onClick.AddListener(OnExit);
     }
 
+    private void Update()
+    {
+        if(Input.anyKey)
+            OnInGame();
+    }
     public  void OnInGame()
     {
         SceneManager.LoadScene(1);
