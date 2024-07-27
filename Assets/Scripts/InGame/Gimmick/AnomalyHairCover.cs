@@ -13,13 +13,14 @@ public class AnomalyHairCover : AnomalyBase
     [SerializeField] private Sprite[] back, forward;
     [SerializeField] private SpriteRenderer backSpriteRenderer, forwardSpriteRenderer;
     [SerializeField] private float coolDown = 0.4f;
+    [SerializeField] private GameObject hairParent;
     private bool reverseOrder = false;
     private bool hasCheckedDistance = false;
 
     private void Start()
     {
         SetProperety();
-        StartCoroutine(ChangeSprite());
+        hairParent.SetActive(false);
     }
 
     private void SetProperety()
@@ -32,11 +33,13 @@ public class AnomalyHairCover : AnomalyBase
 
     public override void Animation()
     {
+        hairParent.SetActive(true);
         StartCoroutine(ChangeSprite());
     }
     public override void ReverseAnomaly()
     {
         base.ReverseAnomaly();
+        hairParent?.SetActive(false);
     }
 
     private IEnumerator ChangeSprite()
@@ -59,7 +62,7 @@ public class AnomalyHairCover : AnomalyBase
             //    }
             //}
 
-          
+
 
             if (!reverseOrder)
             {

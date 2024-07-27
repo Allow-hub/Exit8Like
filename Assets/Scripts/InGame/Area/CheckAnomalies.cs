@@ -105,10 +105,10 @@ public class CheckAnomalies : MonoBehaviour
         Debug.Log("ëIëÇ≥ÇÍÇΩàŸèÌ: " + anomalyObjects[selectedIndex].name);
         anomalyBaseCheck = anomalyObjects[selectedIndex];
         anomalyBaseCheck.IsAnomaly = true;
-        currentProb = initProb;
-        if (GameManager.Instance == null) return;
         anomalyBaseCheck.PlayAnomaly(anomalyBaseCheck.gameObject);
+        currentProb = initProb;
 
+        if (GameManager.Instance == null) return;
         GameManager.Instance.isExsitAnomaly = true;
     }
 
