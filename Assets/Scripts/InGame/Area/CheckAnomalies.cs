@@ -17,6 +17,8 @@ public class CheckAnomalies : MonoBehaviour
     private float currentProb;//異変が選ばれなかったとき加算するため
     private const float addProb = 20;
     private List<AnomalyBase> anomalyObjects = new List<AnomalyBase>();
+    // 異常が非アクティブなインデックスを保持するリストを作成する
+    List<int> notClearIndices = new List<int>();
 
     private AnomalyBase anomalyBaseCheck;
     private void Awake()
@@ -31,7 +33,15 @@ public class CheckAnomalies : MonoBehaviour
             {
                 anomalyObjects.Add(anomaly);
             }
-
+            // 異常が IsClear が false の場合にそのインデックスをリストに追加する
+            for (int i = 0; i < anomalyObjects.Count; i++)
+            {
+                //Debug.Log(anomalyObjects[i].IsClear);
+                if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
+                {
+                    notClearIndices.Add(i);
+                }
+            }
         }
         else
         {
@@ -76,18 +86,8 @@ public class CheckAnomalies : MonoBehaviour
     {
         notAnomalyArea.gameObject.SetActive(false);
         anomalyParent.gameObject.SetActive(true) ;
-        // 異常が非アクティブなインデックスを保持するリストを作成する
-        List<int> notClearIndices = new List<int>();
 
-        // 異常が IsClear が false の場合にそのインデックスをリストに追加する
-        for (int i = 0; i < anomalyObjects.Count; i++)
-        {
-            //Debug.Log(anomalyObjects[i].IsClear);
-            if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
-            {
-                notClearIndices.Add(i);
-            }
-        }
+      
 
         // IsClear が false の異常が見つからない場合は警告を出して処理を終了する
         if (notClearIndices.Count == 0)
@@ -104,6 +104,7 @@ public class CheckAnomalies : MonoBehaviour
        // 必要に応じて、選ばれた異常の情報をログ出力する
         Debug.Log("選択された異常: " + anomalyObjects[selectedIndex].name);
         anomalyBaseCheck = anomalyObjects[selectedIndex];
+        
         anomalyBaseCheck.IsAnomaly = true;
         anomalyBaseCheck.PlayAnomaly(anomalyBaseCheck.gameObject);
         currentProb = initProb;
@@ -125,24 +126,28 @@ public class CheckAnomalies : MonoBehaviour
             //戻ると加算
             if(isBack)
             {
-                if (GameManager.Instance.CurrentNum != 8)
-                {
-                    GameManager.Instance.CurrentNum++;
-                    anomalyBaseCheck.IsClear = true;
-                    anomalyBaseCheck.ReverseAnomaly();
-                }else if(GameManager.Instance.CurrentNum == 8)
-                {
-                    anomalyBaseCheck.IsClear = true;
-                    anomalyBaseCheck.ReverseAnomaly();
-                    currentProb -= addProb;
-                }
+                GameManager.Instance.CurrentNum++;
+                anomalyBaseCheck.IsClear = true;
+                anomalyBaseCheck.ReverseAnomaly();
+                //if (GameManager.Instance.CurrentNum <= 8)
+                //{
+                //    GameManager.Instance.CurrentNum++;
+                //    anomalyBaseCheck.IsClear = true;
+                //    anomalyBaseCheck.ReverseAnomaly();
+                //}else if(GameManager.Instance.CurrentNum == 8)
+                //{
+                //    anomalyBaseCheck.IsClear = true;
+                //    anomalyBaseCheck.ReverseAnomaly();
+                //    currentProb -= addProb;
+                //}
             }
             else
             {
                 notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 
                 anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
- 
+                anomalyBaseCheck.ReverseAnomaly();
+
                 GameManager.Instance.CurrentNum = 0;
             }
         }

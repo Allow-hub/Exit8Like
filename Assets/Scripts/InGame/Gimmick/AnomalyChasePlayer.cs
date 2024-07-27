@@ -32,7 +32,6 @@ public class AnomalyChasePlayer : AnomalyBase
 
     public override void Animation()
     {
-        Debug.Log("Aaa");
         base.Animation();
         anomaly.gameObject.SetActive(true);
         StartCoroutine(Move());
@@ -48,7 +47,6 @@ public class AnomalyChasePlayer : AnomalyBase
     {
         while (IsAnomaly)
         {
-            Debug.Log("A");
             Vector3 targetPosition = new Vector3(player.transform.position.x + shiftX, player.transform.position.y + shiftY, player.transform.position.z + shiftZ);
             anomaly.transform.position = Vector3.Lerp(anomaly.transform.position, targetPosition, followSpeed * Time.deltaTime);
             yield return null; // フレームごとに更新

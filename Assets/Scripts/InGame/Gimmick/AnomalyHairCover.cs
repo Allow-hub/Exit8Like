@@ -17,7 +17,7 @@ public class AnomalyHairCover : AnomalyBase
     private bool reverseOrder = false;
     private bool hasCheckedDistance = false;
 
-    private void Start()
+    private void Awake()
     {
         SetProperety();
         hairParent.SetActive(false);
