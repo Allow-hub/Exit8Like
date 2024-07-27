@@ -86,6 +86,7 @@ public class GameManager : Singleton<GameManager>
                 CheckAnomaly();
                 break;
             case GameState.FindingAnomalies:
+                FindingAnomaly();
                 break;
             case GameState.GameClear:
                 GameClear();
@@ -134,6 +135,9 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void Tutorial()
+    {
+    }
+    private void FindingAnomaly()
     {
     }
 

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class AnomalyHair : AnomalyBase
 {
@@ -18,7 +17,7 @@ public class AnomalyHair : AnomalyBase
     private bool reverseOrder = false; 
     private bool hasCheckedDistance = false;
 
-    private void Start()
+    private void Awake()
     {
         moveHair.gameObject.SetActive(false);
         SetProperety();

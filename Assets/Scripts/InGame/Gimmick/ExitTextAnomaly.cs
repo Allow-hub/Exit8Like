@@ -13,7 +13,7 @@ public class ExitTextAnomaly : AnomalyBase
     [SerializeField] private string explain;
     private int originalText;
 
-    private void Start()
+    private void Awake()
     {
         SetProperety();
         if (GameManager.Instance == null) return;

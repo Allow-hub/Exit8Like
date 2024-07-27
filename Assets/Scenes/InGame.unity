@@ -10439,7 +10439,7 @@ MonoBehaviour:
   clearPos: {fileID: 905770164}
   clearCameraPos: {fileID: 2141714181}
   cameraPos: {fileID: 1746058690}
-  initProb: 100
+  initProb: 80
   addPosition: 118
 --- !u!114 &942581481
 MonoBehaviour:
@@ -18991,7 +18991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   anomaly: {fileID: 815359859}
-  isClear: 1
+  isClear: 0
   distanceFromPlayer: 200
   number: 0
   explain: 
@@ -22653,7 +22653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4339623, g: 0.4073514, b: 0.4073514, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -17,7 +17,7 @@ public class AnomalyRec : AnomalyBase
     private FilmGrain filmGrain;
     private ChromaticAberration chromaticAberration;
 
-    void Start()
+    void Awake()
     {
         SetProperety();
         // ボリュームからエフェクトを取得

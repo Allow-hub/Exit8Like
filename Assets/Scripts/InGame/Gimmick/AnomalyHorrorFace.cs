@@ -14,7 +14,7 @@ public class AnomalyHorrorFace : AnomalyBase
     private bool once = false;
     private bool hasCheckedDistance = false;
 
-    void Start()
+    void Awake()
     {
         SetProperety();
         anomaly.gameObject.SetActive(false);

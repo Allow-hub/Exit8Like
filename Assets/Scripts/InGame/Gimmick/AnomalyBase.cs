@@ -20,7 +20,6 @@ public class AnomalyBase : MonoBehaviour
         if (distance <= DistanceFromPlayer)
         {
             Animation();
-            Debug.Log("AAAAA");
         }
     }
 

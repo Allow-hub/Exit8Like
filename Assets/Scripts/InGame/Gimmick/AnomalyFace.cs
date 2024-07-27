@@ -15,7 +15,7 @@ public class AnomalyFace : AnomalyBase
     [SerializeField] private string explain;
     private bool hasCheckedDistance = false;
     private bool once = false;
-    private void Start()
+    private void Awake()
     {
         SetProperety();
         anomalyFace.gameObject.SetActive(false);

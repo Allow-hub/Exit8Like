@@ -33,21 +33,12 @@ public class CheckAnomalies : MonoBehaviour
             {
                 anomalyObjects.Add(anomaly);
             }
-            // 異常が IsClear が false の場合にそのインデックスをリストに追加する
-            for (int i = 0; i < anomalyObjects.Count; i++)
-            {
-                //Debug.Log(anomalyObjects[i].IsClear);
-                if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
-                {
-                    notClearIndices.Add(i);
-                }
-            }
+
         }
         else
         {
             Debug.LogError("Anomaly Parent is not assigned in CheckAnomalies script.");
         }
-        
     }
     private void Start()
     {
@@ -86,9 +77,16 @@ public class CheckAnomalies : MonoBehaviour
     {
         notAnomalyArea.gameObject.SetActive(false);
         anomalyParent.gameObject.SetActive(true) ;
-
-      
-
+        notClearIndices.Clear();
+        // 異常が IsClear が false の場合にそのインデックスをリストに追加する
+        for (int i = 0; i < anomalyObjects.Count; i++)
+        {
+            //Debug.Log(anomalyObjects[i].IsClear);
+            if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
+            {
+                notClearIndices.Add(i);
+            }
+        }
         // IsClear が false の異常が見つからない場合は警告を出して処理を終了する
         if (notClearIndices.Count == 0)
         {
@@ -104,7 +102,8 @@ public class CheckAnomalies : MonoBehaviour
        // 必要に応じて、選ばれた異常の情報をログ出力する
         Debug.Log("選択された異常: " + anomalyObjects[selectedIndex].name);
         anomalyBaseCheck = anomalyObjects[selectedIndex];
-        
+        //Debug.Log(anomalyBaseCheck.IsClear);
+
         anomalyBaseCheck.IsAnomaly = true;
         anomalyBaseCheck.PlayAnomaly(anomalyBaseCheck.gameObject);
         currentProb = initProb;
@@ -126,20 +125,24 @@ public class CheckAnomalies : MonoBehaviour
             //戻ると加算
             if(isBack)
             {
-                GameManager.Instance.CurrentNum++;
-                anomalyBaseCheck.IsClear = true;
-                anomalyBaseCheck.ReverseAnomaly();
-                //if (GameManager.Instance.CurrentNum <= 8)
-                //{
-                //    GameManager.Instance.CurrentNum++;
-                //    anomalyBaseCheck.IsClear = true;
-                //    anomalyBaseCheck.ReverseAnomaly();
-                //}else if(GameManager.Instance.CurrentNum == 8)
-                //{
-                //    anomalyBaseCheck.IsClear = true;
-                //    anomalyBaseCheck.ReverseAnomaly();
-                //    currentProb -= addProb;
-                //}
+                //GameManager.Instance.CurrentNum++;
+                //anomalyBaseCheck.IsClear = true;
+                //anomalyBaseCheck.ReverseAnomaly();
+                if (GameManager.Instance.CurrentNum <= 8)
+                {
+                    GameManager.Instance.CurrentNum++;
+                    Debug.Log(anomalyBaseCheck);
+                    Debug.Log(anomalyBaseCheck.IsClear);
+
+                    anomalyBaseCheck.IsClear = true;
+                    anomalyBaseCheck.ReverseAnomaly();
+                }
+                else if (GameManager.Instance.CurrentNum == 8)
+                {
+                    anomalyBaseCheck.IsClear = true;
+                    anomalyBaseCheck.ReverseAnomaly();
+                    currentProb -= addProb;
+                }
             }
             else
             {
@@ -157,12 +160,15 @@ public class CheckAnomalies : MonoBehaviour
             {
 
                 GameManager.Instance.CurrentNum = 0;
+                if(anomalyBaseCheck != null) 
+                anomalyBaseCheck.ReverseAnomaly();
+
             }
             else
             {
                 GameManager.Instance.CurrentNum++;
 
-                if (GameManager.Instance.CurrentNum != 8)
+                if (GameManager.Instance.CurrentNum <= 8)
                 {
                     notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 

@@ -16,7 +16,7 @@ public class AnomalySmoking : AnomalyBase
     private bool reverseOrder = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetProperety();
         anomaly.gameObject.SetActive(false);

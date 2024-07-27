@@ -16,7 +16,7 @@ public class AnomalyEndroll : AnomalyBase
     private bool once = false;
     private bool hasCheckedDistance = false;
 
-    void Start()
+    void Awake()
     {
         SetProperety();
         // テキストを非アクティブに設定

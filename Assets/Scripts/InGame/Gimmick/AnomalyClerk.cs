@@ -12,7 +12,7 @@ public class AnomalyClerk : AnomalyBase
     [SerializeField] private string explain;
     Vector3 playerPos;
     private int count = 0;
-    private void Start()
+    private void Awake()
     {
         SetProperety();
     }

@@ -19,7 +19,7 @@ public class AnomalyLight : AnomalyBase
     private ColorAdjustments colorAdjustments;
     private Color initColor;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetProperety();
         if (vol.profile.TryGet<ColorAdjustments>(out colorAdjustments) )

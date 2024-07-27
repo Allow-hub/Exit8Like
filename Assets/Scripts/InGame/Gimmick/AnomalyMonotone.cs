@@ -17,7 +17,7 @@ public class AnomalyMonotone : AnomalyBase
     private bool once = false;
     private ChannelMixer channelMixer;
     private ColorCurves colorCurves;
-    private void Start()
+    private void Awake()
     {
         SetProperety();
         if (vol.profile.TryGet<ChannelMixer>(out channelMixer) && vol.profile.TryGet<ColorCurves>(out colorCurves))

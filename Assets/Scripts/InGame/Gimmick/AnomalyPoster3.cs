@@ -21,7 +21,7 @@ public class AnomalyPoster3 : AnomalyBase
 
     [SerializeField] private float moveSpeed = 1.0f; // 黒目の動くスピード
     private bool hasCheckedDistance = false;
-    void Start()
+    void Awake()
     {
         poster.SetActive(true);
         anomalyPoster.SetActive(false);

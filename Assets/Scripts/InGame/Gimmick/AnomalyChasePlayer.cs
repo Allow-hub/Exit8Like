@@ -12,7 +12,7 @@ public class AnomalyChasePlayer : AnomalyBase
     [SerializeField] private int number;
     [SerializeField] private string explain;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetProperety();
     }

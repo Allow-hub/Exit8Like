@@ -15,7 +15,7 @@ public class AnomalyNomal : AnomalyBase
     private Sprite initSprite;
     [SerializeField] private int number;
     [SerializeField] private string explain;
-    private void Start()
+    private void Awake()
     {
         SetProperety();
     }
