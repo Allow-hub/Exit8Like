@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private PlayerAnimation playerAnimation;
 
-    private const float magnification = 3; // ダッシュ時の速度倍率
+    private const float magnification = 2; // ダッシュ時の速度倍率
     private Vector3 lastInput;
     private GameObject playerObj;
     private Rigidbody rb;

@@ -9,7 +9,8 @@ public class AnomalyChasePlayer : AnomalyBase
     [SerializeField] private GameObject player, anomaly;
     [SerializeField] private float shiftX, shiftY, shiftZ;
     [SerializeField] private float followSpeed = 5f; // í«è]ÇÃë¨Ç≥
-
+    [SerializeField] private int number;
+    [SerializeField] private string explain;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,8 @@ public class AnomalyChasePlayer : AnomalyBase
     {
         IsClear = isClear;
         DistanceFromPlayer = distanceFromPlayer;
+        Number = number;
+        Explain = explain;
     }
 
     public override void Animation()
