@@ -11,24 +11,24 @@ public class ExitNum : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager.Instance is null.");
-            return;
-        }
+        //if (GameManager.Instance == null)
+        //{
+        //    Debug.LogError("GameManager.Instance is null.");
+        //    return;
+        //}
 
-        if (tex == null)
-        {
-            Debug.LogError("TextMeshProUGUI is not assigned.");
-            return;
-        }
+        //if (tex == null)
+        //{
+        //    Debug.LogError("TextMeshProUGUI is not assigned.");
+        //    return;
+        //}
 
-        if (textAnomaly == null)
-        {
-            Debug.LogError("ExitTextAnomaly is not assigned.");
-            return;
-        }
-
+        //if (textAnomaly == null)
+        //{
+        //    Debug.LogError("ExitTextAnomaly is not assigned.");
+        //    return;
+        //}
+        if (GameManager.Instance == null) return;
         lastNum = GameManager.Instance.CurrentNum;
         tex.text = lastNum.ToString();
     }

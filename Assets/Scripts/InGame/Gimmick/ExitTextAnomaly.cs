@@ -16,6 +16,7 @@ public class ExitTextAnomaly : AnomalyBase
     private void Start()
     {
         SetProperety();
+        if (GameManager.Instance == null) return;
         originalText = GameManager.Instance.CurrentNum;
     }
 

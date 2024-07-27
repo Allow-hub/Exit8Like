@@ -19,8 +19,13 @@ public class AnomalyRandomposter : AnomalyBase
 
     }
 
+    public override void Animation()
+    {
+        base.Animation();
+        RandomPoster();
+    }
 
-    private void randomPoster()
+    private void RandomPoster()
     {
         Sprite randomImage = images[Random.Range(0, images.Length)];
 
