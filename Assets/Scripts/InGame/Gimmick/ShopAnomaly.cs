@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AnomalySaineji : AnomalyBase
+public class ShopAnomaly : AnomalyBase
 {
     [SerializeField] private bool isClear = false;
     [SerializeField] private float distanceFromPlayer = 200f;
     [SerializeField] private int number;
     [SerializeField] private string explain;
 
-    [SerializeField] private GameObject Saineji;
-    [SerializeField] private GameObject Sainejianomaly;
+    [SerializeField] private GameObject dai;
+    [SerializeField] private GameObject daiAnomaly;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         SetProperety();
-        Saineji.SetActive(true);
-        Sainejianomaly.SetActive(false);
+        dai.SetActive(true);
+        daiAnomaly.SetActive(false);
     }
 
     private void SetProperety()
@@ -31,15 +31,15 @@ public class AnomalySaineji : AnomalyBase
 
     public override void Animation()
     {
-        Saineji.SetActive(false);
-        Sainejianomaly.SetActive(true);
+        dai.SetActive(false);
+        daiAnomaly.SetActive(true);
     }
 
     public override void ReverseAnomaly()
     {
         base.ReverseAnomaly();
-        Saineji.SetActive(true);
-        Sainejianomaly.SetActive(false);
+        dai.SetActive(true);
+        daiAnomaly.SetActive(false);
     }
 
 

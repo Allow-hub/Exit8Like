@@ -61,6 +61,7 @@ public class GameManager : Singleton<GameManager>
         if (!once && isInGame)
         {
             ChangeToTutorialState();
+            CurrentNum = 0;
             checkAnomalies = GameObject.Find("GameStateController").GetComponent<CheckAnomalies>();
             player = GameObject.Find("Player").gameObject;
             once = true;
