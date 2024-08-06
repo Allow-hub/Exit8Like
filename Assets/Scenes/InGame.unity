@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10508,7 +10508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anomalyParent: {fileID: 853172379}
   notAnomalyObject: {fileID: 1645559355}
-  notAnomalyArea: {fileID: 0}
+  notAnomalyArea: {fileID: 781690392}
   clearArea: {fileID: 1965809794}
   clearPos: {fileID: 905770164}
   clearCameraPos: {fileID: 2141714181}
