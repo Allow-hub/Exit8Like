@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Transform limitObject; // 移動制限をかけるオブジェクトのTransform
 
     [Header("Animation")]
     [SerializeField] private PlayerAnimation playerAnimation;
@@ -42,6 +43,14 @@ public class PlayerController : MonoBehaviour
 
         // 位置を計算して移動
         Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
+
+        // 制約されたx座標を超えないようにする
+        float limitX = limitObject.position.x;
+        if (newPosition.x < limitX)
+        {
+            newPosition.x = limitX;
+        }
+
         rb.MovePosition(newPosition);
     }
 

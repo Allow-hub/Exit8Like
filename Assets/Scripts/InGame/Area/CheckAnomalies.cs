@@ -14,6 +14,7 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private GameObject cameraPos;
     [SerializeField] private float initProb = 100;
     [SerializeField] private float addPosition = 119;
+    private bool IsTutorial=false;
     private float currentProb;//ˆÙ•Ï‚ª‘I‚Î‚ê‚È‚©‚Á‚½‚Æ‚«‰ÁŽZ‚·‚é‚½‚ß
     private const float addProb = 20;
     private List<AnomalyBase> anomalyObjects = new List<AnomalyBase>();
@@ -51,6 +52,7 @@ public class CheckAnomalies : MonoBehaviour
     public void Lottery(bool isTutorial)
     {
         int anomalyProb = Random.Range(0, 100);
+        IsTutorial=isTutorial;
         if (isTutorial)
             anomalyProb = 100;
         if (anomalyProb<=currentProb)
@@ -182,6 +184,8 @@ public class CheckAnomalies : MonoBehaviour
                     cameraPos.gameObject.transform.position=clearCameraPos.position;
                 }
             }
+            if(IsTutorial)
+                GameManager.Instance.CurrentNum=0;
         }
     }
 }

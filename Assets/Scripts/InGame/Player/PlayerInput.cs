@@ -54,6 +54,11 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    public void ResetInput()
+    {
+        inputVector = new Vector2(0, 0);
+
+    }
     private void Update()
     {
         HandleInput();
