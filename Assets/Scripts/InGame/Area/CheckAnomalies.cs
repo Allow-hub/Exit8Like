@@ -14,6 +14,7 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private GameObject cameraPos;
     [SerializeField] private float initProb = 100;
     [SerializeField] private float addPosition = 119;
+    [SerializeField] private GoalManager goalManager;
     private bool IsTutorial=false;
     private float currentProb;//ˆÙ•Ï‚ª‘I‚Î‚ê‚È‚©‚Á‚½‚Æ‚«‰ÁŽZ‚·‚é‚½‚ß
     private const float addProb = 20;
@@ -130,7 +131,7 @@ public class CheckAnomalies : MonoBehaviour
                 //GameManager.Instance.CurrentNum++;
                 //anomalyBaseCheck.IsClear = true;
                 //anomalyBaseCheck.ReverseAnomaly();
-                if (GameManager.Instance.CurrentNum <= 8)
+                if (GameManager.Instance.CurrentNum < 8)
                 {
                     GameManager.Instance.CurrentNum++;
                     Debug.Log(anomalyBaseCheck);
@@ -146,16 +147,33 @@ public class CheckAnomalies : MonoBehaviour
                     currentProb -= addProb;
                 }
             }
+            //i‚Þ
             else
             {
-                notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
+                if (GameManager.Instance.CurrentNum < 8)
+                {
+                    notAnomalyObject.gameObject.transform.position = new Vector3(notAnomalyObject.transform.position.x + addPosition, notAnomalyObject.transform.position.y, notAnomalyObject.transform.position.z);
 
-                anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
-                anomalyBaseCheck.ReverseAnomaly();
+                    anomalyParent.transform.position = new Vector3(anomalyParent.transform.position.x + addPosition, anomalyParent.transform.position.y, anomalyParent.transform.position.z);
+                    anomalyBaseCheck.ReverseAnomaly();
 
-                GameManager.Instance.CurrentNum = 0;
+
+                    GameManager.Instance.CurrentNum = 0;
+                }
+                else if (GameManager.Instance.CurrentNum == 8)
+                {
+                    goalManager.BadEnd();
+                    Debug.Log("BEnd");
+                    anomalyBaseCheck.ReverseAnomaly();
+
+                    clearArea.gameObject.SetActive(true);
+                    GameManager.Instance.player.transform.position = clearPos.position;
+                    cameraPos.gameObject.transform.position = clearCameraPos.position;
+                }
+        
             }
         }
+        //ˆÙ•Ï‚ª‚È‚¢‚Æ‚«‚É
         else
         {
             if (isBack)
@@ -179,6 +197,8 @@ public class CheckAnomalies : MonoBehaviour
                 }
                 if (GameManager.Instance.CurrentNum == 9)
                 {
+                    goalManager.TrueEnd();
+                    Debug.Log("TrueEnd");
                     clearArea.gameObject.SetActive(true);
                     GameManager.Instance.player.transform.position = clearPos.position;
                     cameraPos.gameObject.transform.position=clearCameraPos.position;
