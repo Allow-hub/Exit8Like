@@ -54,7 +54,7 @@ public class AnomalyLight : AnomalyBase
             if (!hasCheckedDistance)
             {
                 float distance = Vector3.Distance(this.transform.position, GameManager.Instance.player.transform.position);
-                Debug.Log(distance);
+                //Debug.Log(distance);
                 if (distance < anomalyDistance)
                 {
                     hasCheckedDistance = true;

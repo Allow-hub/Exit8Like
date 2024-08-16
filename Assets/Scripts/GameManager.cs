@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         // VSyncCount ‚ğ Dont Sync ‚É•ÏX
         QualitySettings.vSyncCount = 0;
         // 144fps‚ğ–Ú•W‚Éİ’è
-        Application.targetFrameRate = 144;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame

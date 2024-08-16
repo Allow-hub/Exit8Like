@@ -16,6 +16,15 @@ public class TurnBackCollider : MonoBehaviour
     private void Start()
     {
         rb = player.GetComponent<Rigidbody>();
+        if (GameManager.Instance == null) return;
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.enabled = false;
+        playerInput.ResetInput();
+        playerAnimation.StopAnimation();
+        Image fadeImage = fade.GetComponent<Image>();
+        fade.color = Color.black;
+        StartCoroutine(FadeOut());
+
     }
 
     private void OnTriggerEnter(Collider other)
