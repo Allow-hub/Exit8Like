@@ -12,6 +12,7 @@ public class CheckAnomalies : MonoBehaviour
     [SerializeField] private Transform clearCameraPos;
 
     [SerializeField] private GameObject cameraPos;
+    [SerializeField] private FadeManager fadeManager;
     [SerializeField] private float initProb = 100;
     [SerializeField] private float addPosition = 119;
     [SerializeField] private GoalManager goalManager;
@@ -88,6 +89,7 @@ public class CheckAnomalies : MonoBehaviour
             if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
             {
                 notClearIndices.Add(i);
+                Debug.Log(anomalyObjects[i].name);
             }
         }
         // IsClear ‚ª false ‚ÌˆÙí‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍŒx‚ğo‚µ‚Äˆ—‚ğI—¹‚·‚é
@@ -162,8 +164,8 @@ public class CheckAnomalies : MonoBehaviour
                 }
                 else if (GameManager.Instance.CurrentNum == 8)
                 {
+                    fadeManager.StartCoroutine(fadeManager.FadeIn(2f));
                     goalManager.BadEnd();
-                    Debug.Log("BEnd");
                     anomalyBaseCheck.ReverseAnomaly();
 
                     clearArea.gameObject.SetActive(true);
@@ -197,8 +199,9 @@ public class CheckAnomalies : MonoBehaviour
                 }
                 if (GameManager.Instance.CurrentNum == 9)
                 {
+                    fadeManager.StartCoroutine(fadeManager.FadeIn(2f));
+
                     goalManager.TrueEnd();
-                    Debug.Log("TrueEnd");
                     clearArea.gameObject.SetActive(true);
                     GameManager.Instance.player.transform.position = clearPos.position;
                     cameraPos.gameObject.transform.position=clearCameraPos.position;

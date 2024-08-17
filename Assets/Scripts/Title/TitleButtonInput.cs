@@ -9,6 +9,7 @@ public class TitleButtonInput : MonoBehaviour
     //[SerializeField] Button startButton,optionButton,exitButton;
     [SerializeField] GameObject mainCanvas, optionCanvas;
     [SerializeField] private Image fade;
+    private bool isAnimating = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,12 @@ public class TitleButtonInput : MonoBehaviour
 
     private void Update()
     {
+        if (isAnimating) return;
         if (Input.anyKey)
+        {
             StartCoroutine(Fade());
+            isAnimating = true;
+        }
     }
     public  void OnInGame()
     {

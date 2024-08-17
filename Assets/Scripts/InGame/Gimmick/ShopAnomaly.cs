@@ -31,6 +31,7 @@ public class ShopAnomaly : AnomalyBase
 
     public override void Animation()
     {
+        base.Animation();
         dai.SetActive(false);
         daiAnomaly.SetActive(true);
     }

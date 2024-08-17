@@ -6,24 +6,11 @@ public class TurnBackCollider : MonoBehaviour
 {
     public delegate void TurnBack();
     public static TurnBack onTurnBack;
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private PlayerAnimation playerAnimation;
-
-    [SerializeField] private Image fade;
-    [SerializeField] private GameObject player;
-    Rigidbody rb;
+    [SerializeField] private FadeManager fadeManager;
 
     private void Start()
     {
-        rb = player.GetComponent<Rigidbody>();
-        if (GameManager.Instance == null) return;
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.enabled = false;
-        playerInput.ResetInput();
-        playerAnimation.StopAnimation();
-        Image fadeImage = fade.GetComponent<Image>();
-        fade.color = Color.black;
-        StartCoroutine(FadeOut());
+
 
     }
 
@@ -34,7 +21,7 @@ public class TurnBackCollider : MonoBehaviour
         {
             GameManager.Instance.isBack = true;
             onTurnBack?.Invoke();
-            StartCoroutine(FadeIn());
+            fadeManager.StartCoroutine(fadeManager.FadeIn(2f));
         }
     }
 
@@ -42,70 +29,70 @@ public class TurnBackCollider : MonoBehaviour
     /// 黒Imageのα値操作
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FadeIn()
-    {
-        rb.velocity = Vector3.zero;
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.enabled = false;
-        playerInput.ResetInput();
-        playerAnimation.StopAnimation();
-        // Imageコンポーネントを使ってカラーを操作する場合
-        Image fadeImage = fade.GetComponent<Image>();
-        Color canvasColor = fadeImage.color;
+    //private IEnumerator FadeIn()
+    //{
+    //    rb.velocity = Vector3.zero;
+    //    PlayerController playerController = player.GetComponent<PlayerController>();
+    //    playerController.enabled = false;
+    //    playerInput.ResetInput();
+    //    playerAnimation.StopAnimation();
+    //    // Imageコンポーネントを使ってカラーを操作する場合
+    //    Image fadeImage = fade.GetComponent<Image>();
+    //    Color canvasColor = fadeImage.color;
 
-        float startAlpha = 0f;
-        float endAlpha = 1f; // アルファ値は0.0f〜1.0fの範囲
-        float duration = 1.0f;
-        float elapsedTime = 0f;
+    //    float startAlpha = 0f;
+    //    float endAlpha = 1f; // アルファ値は0.0f〜1.0fの範囲
+    //    float duration = 1.0f;
+    //    float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
-        {
-            canvasColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
-            fadeImage.color = canvasColor; // 色を更新
-            elapsedTime += Time.deltaTime;
+    //    while (elapsedTime < duration)
+    //    {
+    //        canvasColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+    //        fadeImage.color = canvasColor; // 色を更新
+    //        elapsedTime += Time.deltaTime;
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        // 最終的なアルファ値を設定
-        canvasColor.a = endAlpha;
-        fadeImage.color = canvasColor;
+    //    // 最終的なアルファ値を設定
+    //    canvasColor.a = endAlpha;
+    //    fadeImage.color = canvasColor;
 
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(FadeOut());
-    }
+    //    yield return new WaitForSeconds(2f);
+    //    StartCoroutine(FadeOut());
+    //}
 
     /// <summary>
     /// 黒Imageのα値操作
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FadeOut()
-    {
-        rb.velocity = Vector3.zero;
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.enabled = false;
+    //private IEnumerator FadeOut()
+    //{
+    //    rb.velocity = Vector3.zero;
+    //    PlayerController playerController = player.GetComponent<PlayerController>();
+    //    playerController.enabled = false;
 
-        // Imageコンポーネントを使ってカラーを操作する場合
-        Image fadeImage = fade.GetComponent<Image>();
-        Color canvasColor = fadeImage.color;
+    //    // Imageコンポーネントを使ってカラーを操作する場合
+    //    Image fadeImage = fade.GetComponent<Image>();
+    //    Color canvasColor = fadeImage.color;
 
-        float startAlpha = 1f;
-        float endAlpha = 0f; // アルファ値は0.0f〜1.0fの範囲
-        float duration = 1.0f;
-        float elapsedTime = 0f;
+    //    float startAlpha = 1f;
+    //    float endAlpha = 0f; // アルファ値は0.0f〜1.0fの範囲
+    //    float duration = 1.0f;
+    //    float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
-        {
-            canvasColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
-            fadeImage.color = canvasColor; // 色を更新
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //    while (elapsedTime < duration)
+    //    {
+    //        canvasColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+    //        fadeImage.color = canvasColor; // 色を更新
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        // 最終的なアルファ値を設定
-        canvasColor.a = endAlpha;
-        fadeImage.color = canvasColor;
+    //    // 最終的なアルファ値を設定
+    //    canvasColor.a = endAlpha;
+    //    fadeImage.color = canvasColor;
 
-        playerController.enabled = true;
-    }
+    //    playerController.enabled = true;
+    //}
 }
