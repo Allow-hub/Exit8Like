@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoalManager : MonoBehaviour
 {
     [SerializeField] private GameObject trueArea, badArea,player;
-    [SerializeField] private GameObject trueEffect;
+    [SerializeField] private GameObject trueEffect,badEffect;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private PlayerAnimation playerAnimation;
@@ -19,6 +19,8 @@ public class GoalManager : MonoBehaviour
     private void Start()
     {
         trueEffect.SetActive(false);
+        badEffect.SetActive(false);
+
         isAnimation = false;
         isReverse=false;
         trueArea.SetActive(false);
@@ -43,7 +45,7 @@ public class GoalManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         isAnimation = true;
         StartCoroutine(Animation());
-
+        badEffect.SetActive(true);
         // 現在の位置が目標位置に近づくまでループ
         while (Vector3.Distance(player.transform.position, targetPos.position) > 0.1f)
         {
