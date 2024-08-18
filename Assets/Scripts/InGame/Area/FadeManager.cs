@@ -9,6 +9,7 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerAnimation playerAnimation;
+    [SerializeField] private Option option;
 
     [SerializeField] private Image fade;
     [SerializeField] private GameObject player;
@@ -23,7 +24,7 @@ public class FadeManager : MonoBehaviour
         playerAnimation.StopAnimation();
         fade.color = Color.black;
         StartCoroutine(FadeOut());
-
+        StartCoroutine(OpenOptionFirst());
     }
     /// <summary>
     /// 黒Imageのα値操作
@@ -94,4 +95,10 @@ public class FadeManager : MonoBehaviour
         playerController.enabled = true;
     }
 
+    private IEnumerator OpenOptionFirst()
+    {
+        yield return new WaitForSeconds(1f);
+        option.ActiveCanvas();
+
+    }
 }

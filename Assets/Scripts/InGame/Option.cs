@@ -8,7 +8,7 @@ public class Option : MonoBehaviour
     [SerializeField] private GameObject optionCanvas,option,anomaly,explain;
     [SerializeField] private Button optionButton,anomalyButton , explainButton; 
 
-    private void Start()
+    private void Awake()
     {
         optionCanvas.SetActive(false);
         optionButton.onClick.AddListener(() => Active(false, true, false));
@@ -46,4 +46,8 @@ public class Option : MonoBehaviour
         anomaly.gameObject.SetActive(an);
     }
 
+    public   void ActiveCanvas()
+    {
+        optionCanvas.SetActive(true);
+    }
 }

@@ -34,6 +34,7 @@ public class CheckAnomalies : MonoBehaviour
             AnomalyBase[] anomalies = FindObjectsOfType<AnomalyBase>();
             foreach (AnomalyBase anomaly in anomalies)
             {
+                anomaly.IsClear = false;
                 anomalyObjects.Add(anomaly);
             }
 
@@ -89,7 +90,7 @@ public class CheckAnomalies : MonoBehaviour
             if (anomalyObjects[i] != null && !anomalyObjects[i].IsClear)
             {
                 notClearIndices.Add(i);
-                Debug.Log(anomalyObjects[i].name);
+               // Debug.Log(anomalyObjects[i].name);
             }
         }
         // IsClear ‚ª false ‚ÌˆÙí‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍŒx‚ğo‚µ‚Äˆ—‚ğI—¹‚·‚é

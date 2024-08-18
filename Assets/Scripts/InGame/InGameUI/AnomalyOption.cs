@@ -10,36 +10,34 @@ public class AnomalyOption : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tex;
     [SerializeField] private GameObject[] chear;
     private SpriteRenderer spriteRenderer;
-    private List<AnomalyBase> anomalyObjects = new List<AnomalyBase>();
+    [SerializeField] private List<AnomalyBase> anomalyObjects = new List<AnomalyBase>();
 
     private AnomalyBase anomalyBaseCheck;
 
-    void Start()
-    {
-        // AnomalyBase コンポーネントを持つすべてのオブジェクトを取得
-        AnomalyBase[] anomalies = FindObjectsOfType<AnomalyBase>();
-        foreach (AnomalyBase anomaly in anomalies)
-        {
-            anomalyObjects.Add(anomaly);
-        }
 
-  
-    }
-
+ 
     public void OnPointerEnter(int num)
     {
-        // マウスが UI 要素に乗ったときの処理
-        Debug.Log("Pointer Entered: ");
-        if (anomalyObjects[num].IsClear == false)
-            tex.text = "???";
+        // インデックスが範囲内かチェック
+        if (num >= 0 && num < anomalyObjects.Count)
+        {
+            Debug.Log("Pointer Entered: " + anomalyObjects[num].name + anomalyObjects[num].Explain + anomalyObjects[num].IsClear);
+
+            // 最新の IsClear 状態を確認
+            if (anomalyObjects[num].IsClear == false)
+            {
+                tex.text = "???";
+            }
+            else
+            {
+                tex.text = anomalyObjects[num].Explain;
+            }
+        }
         else
         {
-            tex.text = anomalyObjects[num].Explain;
+            Debug.LogWarning("Invalid index: " + num);
+            tex.text = "Invalid selection";
         }
     }
 
-    void Update()
-    {
-        // 必要な更新処理があればここに追加
-    }
 }
