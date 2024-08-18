@@ -9,6 +9,7 @@ public class GoalManager : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private PlayerAnimation playerAnimation;
+    [SerializeField] private Ending ending;
     [SerializeField] private Transform targetPos, targetPosDown;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite backPlayer;
@@ -70,6 +71,7 @@ public class GoalManager : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, targetPosDown.position, sitSpeed * Time.deltaTime);
             yield return null; // フレームごとに処理を一時停止
         }
+        ending.StartCoroutine(ending.EndRoll(true));
     }
     private IEnumerator TrueAnimation()
     {
@@ -103,6 +105,8 @@ public class GoalManager : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, targetPosDown.position, sitSpeed * Time.deltaTime);
             yield return null; // フレームごとに処理を一時停止
         }
+        ending.StartCoroutine(ending.EndRoll(false));
+
     }
 
     private IEnumerator Animation()

@@ -13,10 +13,8 @@ public class TitleButtonInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //mainCanvas.SetActive(true);
-        //optionCanvas.SetActive(false);
-        //startButton.onClick.AddListener(OnInGame);
-        //optionButton.onClick.AddListener(OnOption);
+        fade.color = Color.black;
+        StartCoroutine(FadeOut());
         //exitButton.onClick.AddListener(OnExit);
     }
 
@@ -61,6 +59,32 @@ public class TitleButtonInput : MonoBehaviour
         fadeImage.color = canvasColor;
         yield return new WaitForSeconds(1f);
         OnInGame();
+
+    }
+    IEnumerator FadeOut()
+    {
+
+        // Imageコンポーネントを使ってカラーを操作する場合
+        Image fadeImage = fade.GetComponent<Image>();
+        Color canvasColor = fadeImage.color;
+
+        float startAlpha = 1f;
+        float endAlpha = 0f; // アルファ値は0.0f〜1.0fの範囲
+        float duration = 1.0f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            canvasColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            fadeImage.color = canvasColor; // 色を更新
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // 最終的なアルファ値を設定
+        canvasColor.a = endAlpha;
+        fadeImage.color = canvasColor;
 
     }
     //public void OnOption()

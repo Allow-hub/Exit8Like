@@ -13,7 +13,7 @@ public class AnomalyFacepanel : AnomalyBase
     [SerializeField] private GameObject KohameAnomaly;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetProperety();
         Kohame.SetActive(true);

@@ -14,7 +14,7 @@ public class ShopAnomaly : AnomalyBase
     [SerializeField] private GameObject daiAnomaly;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetProperety();
         dai.SetActive(true);
