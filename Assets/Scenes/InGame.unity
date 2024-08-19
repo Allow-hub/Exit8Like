@@ -14823,15 +14823,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerLeft:
-  - {fileID: 21300000, guid: 24f48a3ee428956449eefa0f6e3af2d9, type: 3}
-  - {fileID: 21300000, guid: d62b334d76ca4f1468f7bc0ca1236db0, type: 3}
-  - {fileID: 21300000, guid: 0f5becf7ae2066545801d3fb867c1b3e, type: 3}
+  - {fileID: 21300000, guid: eecbe2f1f106ced44be82b4c9fb1a876, type: 3}
+  - {fileID: 21300000, guid: 0cc08dbf0264aa14d8f3846d5eead35f, type: 3}
+  - {fileID: 21300000, guid: 94cab2d7abdeb3148a8778941318b1b8, type: 3}
+  - {fileID: 21300000, guid: 5b0a43b02b7e79646b47fc987afc5b75, type: 3}
+  - {fileID: 21300000, guid: 8a16bf5201c1ceb4b8d1251982418f7c, type: 3}
   PlayerRight:
-  - {fileID: 21300000, guid: 7782a1a716430644ba45ac83192e6a79, type: 3}
-  - {fileID: 21300000, guid: 55d90d4a3d5cd7a41aa995f32fbf5992, type: 3}
-  - {fileID: 21300000, guid: 548b17d4202c59543ab73c645097cba1, type: 3}
-  baseCooldown: 0.35
+  - {fileID: 21300000, guid: abf0804d7a42c714d9e8d1b4ca106a82, type: 3}
+  - {fileID: 21300000, guid: 20ec7386b4b744440bd0513d9dfafd40, type: 3}
+  - {fileID: 21300000, guid: d5cac1e53a125eb42919cac0c51e76ec, type: 3}
+  - {fileID: 21300000, guid: a0f7539a9544cbc49b668668af8b9da4, type: 3}
+  - {fileID: 21300000, guid: c359aa48aa79bc745aed1b4b7d1a060e, type: 3}
+  baseCooldown: 0.1
   spriteRenderer: {fileID: 1057206671}
+  playerInput: {fileID: 1031619088}
+  defPlayerLeft: {fileID: 21300000, guid: 94cab2d7abdeb3148a8778941318b1b8, type: 3}
+  defPlayerRight: {fileID: 21300000, guid: d5cac1e53a125eb42919cac0c51e76ec, type: 3}
   isAnimating: 1
 --- !u!1 &1044166293
 GameObject:
@@ -15288,7 +15295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 55d90d4a3d5cd7a41aa995f32fbf5992, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5cac1e53a125eb42919cac0c51e76ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -24558,6 +24565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Poster3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677147768020060883, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7694291798082717690, guid: c15b68a7e8c1c8d46aca4ed424a6ac09,
         type: 3}

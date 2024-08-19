@@ -8,17 +8,24 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float baseCooldown = 0.5f; // 基本のクールダウン時間
 
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Sprite defPlayerLeft,defPlayerRight;
     public bool isAnimating = false; // アニメーション制御のためのフラグ
 
     private float currentCooldown;
     private bool reverseOrder = false;
     private Coroutine currentCoroutine = null; // 現在のコルーチンを保存
 
+    private Vector3 lastInput;
     private void Awake()
     {
         currentCooldown = baseCooldown; // 初期クールダウン時間を設定
     }
+    private void Update()
+    {
+        lastInput = playerInput.InputVector.x != 0 ? playerInput.InputVector : lastInput;
 
+    }
     public void StartRightAnimation(float speedMultiplier)
     {
         StopCurrentAnimation();
@@ -38,6 +45,16 @@ public class PlayerAnimation : MonoBehaviour
     public void StopAnimation()
     {
         StopCurrentAnimation();
+
+        if (lastInput.x < 0)
+        {
+            spriteRenderer.sprite = defPlayerLeft;
+        }
+        else if(lastInput.x > 0)
+        {
+            spriteRenderer.sprite = defPlayerRight;
+
+        }
         isAnimating = false;
     }
 
