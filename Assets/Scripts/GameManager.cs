@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
         base.Init();
         // VSyncCount ‚ğ Dont Sync ‚É•ÏX
         QualitySettings.vSyncCount = 0;
-        // 144fps‚ğ–Ú•W‚Éİ’è
+        // fps60‚ğ–Ú•W‚Éİ’è
         Application.targetFrameRate = 60;
     }
 

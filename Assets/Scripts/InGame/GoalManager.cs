@@ -80,24 +80,27 @@ public class GoalManager : MonoBehaviour
         playerInput.enabled = false;
         yield return new WaitForSeconds(2f);
         isAnimation = true;
-        trueEffect.SetActive(true);
 
         StartCoroutine(Animation());
+        trueEffect.SetActive(true);
+
         // 現在の位置が目標位置に近づくまでループ
         while (Vector3.Distance(player.transform.position, targetPos.position) > 0.1f)
         {
+
             // 一定速度で目標位置に向かって移動
             player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos.position, speed * Time.deltaTime);
             yield return null; // フレームごとに処理を一時停止
         }
-        isAnimation = false;
 
+        isAnimation = false;
         // 最後に目標位置にぴったり位置を合わせる
         player.transform.position = targetPos.position;
         //spriteRenderer.sprite = backPlayer;
 
         playerCamera.enabled = false;
         yield return new WaitForSeconds(1);
+
         // 現在の位置が目標位置に近づくまでループ
         while (Vector3.Distance(player.transform.position, targetPosDown.position) > 0.01f)
         {

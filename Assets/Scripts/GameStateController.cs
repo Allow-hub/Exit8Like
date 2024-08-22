@@ -31,7 +31,7 @@ public class GameStateController : MonoBehaviour
         if (GameManager.Instance == null) return false;
         return GameManager.Instance.CurrentNum >= 9;
     }
-    private void ChangeStateCheckAnomalies()
+    public void ChangeStateCheckAnomalies()
     {
         if (GameManager.Instance == null) return;
         GameManager.Instance.ChangeToCheckAnomaliesState();

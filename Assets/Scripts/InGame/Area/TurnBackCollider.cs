@@ -20,11 +20,16 @@ public class TurnBackCollider : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.isBack = true;
-            onTurnBack?.Invoke();
             fadeManager.StartCoroutine(fadeManager.FadeIn(2f));
+
+            TurnBackEvent();
         }
     }
 
+    public void TurnBackEvent()
+    {
+        onTurnBack?.Invoke();
+    }
     /// <summary>
     /// 黒Imageのα値操作
     /// </summary>
